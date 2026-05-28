@@ -1,0 +1,18 @@
+id: cnvd-2021-09650
+info:
+  author: pocscanner
+  description: 锐捷NBR路由器 EWEB网管系统部分接口存在命令注入，导致远程命令执行获取权限
+  name: 锐捷 NBR路由器 远程命令执行漏洞 CNVD-2021-09650
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/guest_auth/guestIsUp.php'

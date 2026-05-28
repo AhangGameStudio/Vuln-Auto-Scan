@@ -1,0 +1,18 @@
+id: '----edr-----------'
+info:
+  author: pocscanner
+  description: 深信服终端检测响应平台是深信服公司开发的一套EDR系统。攻击者利用该漏洞，登录任意用户
+  name: 深信服 EDR 后台任意用户登陆漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//xxx.xxx.xxx.xxx/ui/login.php'

@@ -1,0 +1,21 @@
+id: h3c-secparh----get_detail_view-php---------
+info:
+  author: pocscanner
+  description: 'H3C SecParh堡垒机 get_detail_view.php 存在任意用户登录漏洞
+
+
+    与齐治堡垒机出现的漏洞相似'
+  name: H3C SecParh堡垒机 get_detail_view.php 任意用户登录漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/audit/gui_detail_view.php'

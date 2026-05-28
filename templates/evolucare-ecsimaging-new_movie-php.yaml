@@ -1,0 +1,18 @@
+id: evolucare-ecsimaging-new_movie-php---------
+info:
+  author: pocscanner
+  description: EVOLUCARE ECSimage是一款国外使用的医疗管理系统，研究发现其new_movie.php接口中存在命令注入漏洞,攻击者可利用该漏洞获取系统敏感信息等.
+  name: Evolucare Ecsimaging new_movie.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/new_movie.php'

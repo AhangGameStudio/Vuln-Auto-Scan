@@ -1,0 +1,15 @@
+id: officeweb365-savedraw---------
+info:
+  author: pocscanner
+  description: OfficeWeb365 SaveDraw 接口存在任意文件上传漏洞，攻击者通过漏洞可以在服务器中上传任意文件获取服务器权限
+  name: OfficeWeb365 SaveDraw 任意文件上传漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

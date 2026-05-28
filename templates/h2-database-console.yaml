@@ -1,0 +1,34 @@
+id: h2-database-console------
+info:
+  author: pocscanner
+  description: 'H2 database是一款Java内存数据库，多用于单元测试。H2 database自带一个Web管理页面，在Spirng开发中，如果我们设置如下选项，即可允许外部用户访问Web管理页面，且没有鉴权：
+
+
+    ```
+
+    spring.h2.console.enabled=true
+
+    spring.h2.console.settings.web-allow-others=true
+
+    ```
+
+
+    利用这个管理页面，我们可以进行JNDI注入攻击，进而在目标环境下执行任意命令。
+
+
+    参考链接：
+
+
+    - https://mp.weixin.qq.com/s?__biz=MzI2NTM1MjQ3OA==&mid=2247483658&idx=1&sn=584710da0fbe56c1246755147bcec48e'
+  name: H2 Database Console 未授权访问
+  reference:
+  - https://mp.weixin.qq.com/s?__biz=MzI2NTM1MjQ3OA==&mid=2247483658&idx=1&sn=584710da0fbe56c1246755147bcec48e
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

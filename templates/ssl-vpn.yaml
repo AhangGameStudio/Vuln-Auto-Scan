@@ -1,0 +1,22 @@
+id: '----ssl-vpn----------'
+info:
+  author: pocscanner
+  description: '深信服 SSL VPN 客户端存在远程文件下载，且文件可控下载后可执行
+
+
+    参考阅读：
+
+
+    - https://mp.weixin.qq.com/s/XbsxziIFKx8VhGd-pv0Ghg'
+  name: 深信服 SSL VPN 客户端远程文件下载
+  reference:
+  - https://mp.weixin.qq.com/s/XbsxziIFKx8VhGd-pv0Ghg
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

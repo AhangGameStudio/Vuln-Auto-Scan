@@ -1,0 +1,18 @@
+id: --srm-tomcat-jsp-------
+info:
+  author: pocscanner
+  description: 汉得SRM tomcat.jsp 文件存在登陆绕过漏洞, 攻击者通过发送请求包，可以获取后台管理员权限
+  name: 汉得SRM tomcat.jsp 登陆绕过漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/tomcat.jsp'

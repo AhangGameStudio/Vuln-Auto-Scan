@@ -1,0 +1,15 @@
+id: clickhouse-api-------------
+info:
+  author: pocscanner
+  description: ClickHouse API 数据库接口存在未授权访问漏洞，攻击者通过漏洞可以执行任意SQL命令获取数据库数据
+  name: ClickHouse API 数据库接口未授权访问漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

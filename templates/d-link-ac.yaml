@@ -1,0 +1,15 @@
+id: d-link-ac-----------
+info:
+  author: pocscanner
+  description: D-Link AC管理系统存在默认账号密码，可被获取敏感信息
+  name: D-Link AC管理系统 默认账号密码
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

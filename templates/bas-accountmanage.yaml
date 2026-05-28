@@ -1,0 +1,15 @@
+id: '---bas------------accountmanage--------'
+info:
+  author: pocscanner
+  description: 绿盟 BAS日志数据安全性分析系统存在未授权访问漏洞，通过漏洞可以添加任意账户登录平台获取敏感信息
+  name: 绿盟 BAS日志数据安全性分析系统 accountmanage 未授权访问漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

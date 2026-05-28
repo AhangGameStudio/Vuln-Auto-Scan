@@ -1,0 +1,15 @@
+id: weblogic-------------
+info:
+  author: pocscanner
+  description: ''
+  name: Weblogic 弱口令+前台任意文件读取
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

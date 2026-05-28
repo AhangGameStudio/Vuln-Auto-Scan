@@ -1,0 +1,18 @@
+id: '----sg---------catjs-php---------'
+info:
+  author: pocscanner
+  description: 深信服 SG上网优化管理系统 catjs.php 存在任意文件读取漏洞，攻击者通过漏洞可以获取服务器上的敏感文件
+  name: 深信服 SG上网优化管理系统 catjs.php 任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/php/catjs.php'

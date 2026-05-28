@@ -1,0 +1,15 @@
+id: --ewebs-casmain-xgi---------
+info:
+  author: pocscanner
+  description: 极通EWEBS casmain.xgi 任意文件读取漏洞，攻击者通过漏洞可以读取任意文件
+  name: 极通EWEBS casmain.xgi 任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

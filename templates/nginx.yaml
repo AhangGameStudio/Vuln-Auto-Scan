@@ -1,0 +1,15 @@
+id: nginx-------
+info:
+  author: pocscanner
+  description: ''
+  name: Nginx 配置错误漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

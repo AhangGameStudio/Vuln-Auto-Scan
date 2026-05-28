@@ -1,0 +1,15 @@
+id: '-----lvs---------business-------'
+info:
+  author: pocscanner
+  description: 杭州吉拉科技有限公司多个系统存在目录遍历漏洞，由于 /Business/ 访问控制不严，攻击者可利用该漏洞获取敏感信息。
+  name: 吉拉科技 LVS精益价值管理系统 Business 目录遍历漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

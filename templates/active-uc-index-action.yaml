@@ -1,0 +1,18 @@
+id: active-uc-index-action---------
+info:
+  author: pocscanner
+  description: 网动统一通信平台 Active UC index.action 存在S2-045远程命令执行漏洞, 通过漏洞可以执行任意命令
+  name: Active UC index.action 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/acenter/index.action'

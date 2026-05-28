@@ -1,0 +1,16 @@
+id: '------------agentboard-xgi---------'
+info:
+  author: pocscanner
+  description: 瑞友天翼应用虚拟化系统是基于服务器计算架构的应用虚拟化平台，它将用户各种应用软件集中部署到瑞友天翼服务集群，客户端通过 WEB 即可访问经服务器上授权的应用软件，实现集中应用、远程接入、协同办公等。未经身份认证的远程攻击者可以利用系统中存在的
+    SQL 注入漏洞，写入后门文件，从而执行远程代码。
+  name: 瑞友天翼应用虚拟化系统 AgentBoard.XGI 远程代码执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

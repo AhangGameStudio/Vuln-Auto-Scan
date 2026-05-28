@@ -1,0 +1,15 @@
+id: '-----------cookie-cgi-----'
+info:
+  author: pocscanner
+  description: 飞鱼星 家用智能路由存在权限绕过，通过Drop特定的请求包访问未授权的管理员页面
+  name: 飞鱼星 家用智能路由 cookie.cgi 权限绕过
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

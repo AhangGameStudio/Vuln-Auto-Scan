@@ -1,0 +1,15 @@
+id: '----linkworks-msgbroadcastuploadfile-aspx---------'
+info:
+  author: pocscanner
+  description: 广联达 Linkworks msgbroadcastuploadfile.aspx 存在后台文件上传漏洞，攻击者通过SQL注入获取管理员信息后，可以登陆发送请求包获取服务器权限
+  name: 广联达 Linkworks msgbroadcastuploadfile.aspx 后台文件上传漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

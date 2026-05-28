@@ -1,0 +1,18 @@
+id: '-----erp-comboxstore-action---------'
+info:
+  author: pocscanner
+  description: 企望制造 ERP comboxstore.action接口存在远程命令执行漏洞，攻击者通过漏洞可以获取服务器权限，执行任意命令
+  name: 企望制造 ERP comboxstore.action 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/mainFunctions/comboxstore.action'

@@ -1,0 +1,15 @@
+id: acti------images---------
+info:
+  author: pocscanner
+  description: ACTI 视频监控 存在任意文件读取漏洞
+  name: ACTI 视频监控 images 任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

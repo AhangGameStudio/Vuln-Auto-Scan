@@ -1,0 +1,18 @@
+id: xampp-phpinfo-php-------
+info:
+  author: pocscanner
+  description: XAMPP存在信息泄露漏洞，/dashboard/phpinfo.php 访问权限控制不严格，攻击者可获取系统敏感信息。
+  name: XAMPP phpinfo.php 信息泄漏漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/dashboard/phpinfo.php'

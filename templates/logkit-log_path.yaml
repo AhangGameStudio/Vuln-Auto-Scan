@@ -1,0 +1,15 @@
+id: '----logkit-log_path---------'
+info:
+  author: pocscanner
+  description: 七牛云 logkit log_path 参数可自定义读取服务器文件，配合读取的文件写入Web目录将会使攻击者读取到服务器任意文件，造成服务器敏感信息泄漏
+  name: 七牛云 logkit log_path 任意文件读取漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

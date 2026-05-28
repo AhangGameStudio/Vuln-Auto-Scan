@@ -1,0 +1,40 @@
+# Consul Service API远程命令执行漏洞
+
+## 漏洞描述
+2018年11月27日，Consul在官方博客中发布了关于Consul工具在特定配置下可能导致远程命令执行（RCE）漏洞的公告，并描述了防护该漏洞的配置方案。
+
+Consul是HashiCorp公司推出的一款开源工具，用于实现分布式系统的服务发现与配置。与其他分布式服务注册与发现的方案相比，Consul提供的方案更为“一站式”。Consul内置了服务注册与发现框架、分布一致性协议实现、健康检查、Key/Value存储、多数据中心方案，不再需要依赖其他工具（例如ZooKeeper等），使用方式也相对简单。
+
+Consul使用Go语言编写，因此具有天然的可移植性（支持Linux、Windows和Mac OS X系统）；且安装包中仅包含一个可执行文件，便于部署，可与Docker等轻量级容器无缝配合。
+
+在特定配置下，恶意攻击者可以通过发送精心构造的HTTP请求在未经授权的情况下在Consul服务端远程执行命令。
+
+## 危害等级
+CRITICAL
+
+## 参考链接
+
+## 漏洞复现方法
+Windows在当前目录下执行命令：
+
+```
+#开启脚本检测功能，该功能开启后漏洞才存在
+consul.exe agent -dev -client <your-target-ip>  -enable-script-checks   
+```
+
+访问`your-target-ip:8500`：
+
+![image-20230306091757424](images/image-20230306091757424.png)
+
+## Payloads
+```
+#开启脚本检测功能，该功能开启后漏洞才存在
+consul.exe agent -dev -client <your-target-ip>  -enable-script-checks
+```
+```
+http://your-target-ip:port/v1/agent/self
+```
+```
+msf6 > search Hashicorp
+msf6 > use exploit/multi/misc/consul_service_exec
+```

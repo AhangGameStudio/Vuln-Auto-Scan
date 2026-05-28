@@ -1,0 +1,15 @@
+id: '--------------fileup-aspx---------'
+info:
+  author: pocscanner
+  description: 银达汇智 智慧综合管理平台 FileDownLoad.aspx 存在任意文件读取漏洞，通过漏洞攻击者可下载服务器中的任意文件
+  name: 银达汇智 智慧综合管理平台 FileUp.aspx 任意文件上传漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

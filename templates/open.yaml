@@ -1,0 +1,15 @@
+id: '-------------open---------'
+info:
+  author: pocscanner
+  description: BYTEVALUE 百为流控路由器是一款追求带宽利用率的多功能路由器。百为智能流控路由器 /goform/webRead/open 路由存在有回显的命令注入漏洞。
+  name: 百为通达 智能流控路由器 open 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

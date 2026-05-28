@@ -1,0 +1,18 @@
+id: '---------bems-downloads---------'
+info:
+  author: pocscanner
+  description: 龙璟科技 电池能量BEMS 存在接口可任意文件下载获取服务器任意文件信息
+  name: 龙璟科技 电池能量BEMS downloads 任意文件下载漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/downloads'

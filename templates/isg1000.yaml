@@ -1,0 +1,15 @@
+id: '---isg1000-------------'
+info:
+  author: pocscanner
+  description: 迈普 ISG1000安全网关 存在任意文件下载漏洞，攻击者通过漏洞可以获取服务器任意文件
+  name: 迈普 ISG1000安全网关 任意文件下载漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

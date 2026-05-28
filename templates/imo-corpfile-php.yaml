@@ -1,0 +1,18 @@
+id: imo------corpfile-php---------
+info:
+  author: pocscanner
+  description: imo 云办公室 corpfile.php 文件中参数过滤不足，导致可以随意进行命令拼接，获取服务器权限
+  name: imo 云办公室 corpfile.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/corpfile.php'

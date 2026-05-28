@@ -1,0 +1,15 @@
+id: kyan--------hosts---------
+info:
+  author: pocscanner
+  description: Kyan 网络监控设备 存在账号密码泄露漏洞，攻击者通过漏洞可以获得账号密码和后台权限
+  name: Kyan 网络监控设备 hosts 账号密码泄露漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

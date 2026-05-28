@@ -1,0 +1,18 @@
+id: '------gui_detail_view-php---------'
+info:
+  author: pocscanner
+  description: 齐治堡垒机 存在任意用户登录漏洞，访问特定的Url即可获得后台权限
+  name: 齐治堡垒机 gui_detail_view.php 任意用户登录漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//xxx.xxx.xxx.xxx/audit/gui_detail_view.php'

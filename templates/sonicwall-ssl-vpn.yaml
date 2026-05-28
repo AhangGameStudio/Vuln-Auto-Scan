@@ -1,0 +1,15 @@
+id: sonicwall-ssl-vpn---------
+info:
+  author: pocscanner
+  description: SonicWall SSL-VPN 远程命令执行在1月24日被公开 EXP，此设备存在远程命令执行漏洞
+  name: SonicWall SSL-VPN 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

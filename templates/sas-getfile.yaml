@@ -1,0 +1,15 @@
+id: '---sas----getfile---------'
+info:
+  author: pocscanner
+  description: 绿盟堡垒机存在任意用户登录漏洞，攻击者通过漏洞包含 www/local_user.php 实现任意⽤户登录
+  name: 绿盟 SAS堡垒机 GetFile 任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,18 @@
+id: '------setdomain-php-------'
+info:
+  author: pocscanner
+  description: 皓峰防火墙 setdomain.php 页面存在越权访问漏洞，攻击者通过漏洞可修改管理员等配置信息
+  name: 皓峰防火墙 setdomain.php 越权访问漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/setdomain.php'

@@ -1,0 +1,15 @@
+id: netmizer--------------
+info:
+  author: pocscanner
+  description: NetMizer 日志管理系统存在登录绕过漏洞，通过限制某个请求包的发送获取后台权限
+  name: NetMizer 日志管理系统 登录绕过漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

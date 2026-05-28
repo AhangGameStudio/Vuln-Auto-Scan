@@ -1,0 +1,15 @@
+id: cnvd-2021-12793
+info:
+  author: pocscanner
+  description: 启明星辰 天清汉⻢USG防⽕墙 存在逻辑缺陷漏洞，攻击者通过账号密码可以进入后台后更改任意用户权限升级为管理员。
+  name: 启明星辰 天清汉马USG防火墙 逻辑缺陷漏洞 CNVD-2021-12793
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

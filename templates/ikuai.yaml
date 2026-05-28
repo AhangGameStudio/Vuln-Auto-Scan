@@ -1,0 +1,19 @@
+id: ikuai-----------
+info:
+  author: pocscanner
+  description: '参考链接：
+
+
+    - https://forum.ywhack.com/thread-115307-1-8.html'
+  name: iKuai 后台任意文件读取漏洞
+  reference:
+  - https://forum.ywhack.com/thread-115307-1-8.html
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

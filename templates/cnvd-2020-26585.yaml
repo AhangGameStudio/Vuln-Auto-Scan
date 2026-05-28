@@ -1,0 +1,44 @@
+id: cnvd-2020-26585
+info:
+  author: pocscanner
+  description: 'Showdoc 是一个开源的在线共享文档工具。
+
+
+    Showdoc <= 2.8.6 存在 uploadImg 文件上传漏洞，该漏洞源于未正确使用 upload 方法至文件后缀限制失效，攻击者可在未授权的情况下上传任意文件，进而获取服务器权限等。
+
+
+    参考链接：
+
+
+    - https://github.com/star7th/showdoc/pull/1059
+
+    - https://github.com/star7th/showdoc/commit/fb77dd4db88dc23f5e570fc95919ee882aca520a
+
+    - https://github.com/star7th/showdoc/commit/e1cd02a3f98bb227c0599e7fa6b803ab1097597f'
+  name: ShowDoc 前台任意文件上传 CNVD-2020-26585
+  reference:
+  - https://github.com/star7th/showdoc/pull/1059
+  - https://github.com/star7th/showdoc/commit/fb77dd4db88dc23f5e570fc95919ee882aca520a
+  - https://github.com/star7th/showdoc/commit/e1cd02a3f98bb227c0599e7fa6b803ab1097597f
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/index.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/Public/Uploads/2024-06-03/665d568d2cdd9.php'

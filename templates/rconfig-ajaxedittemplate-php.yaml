@@ -1,0 +1,58 @@
+id: rconfig-ajaxedittemplate-php-----------
+info:
+  author: pocscanner
+  description: rConfig ajaxEditTemplate.php 存在后台远程命令执行
+  name: rConfig ajaxEditTemplate.php 后台远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/../../classes/db2.class.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/www/test.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/home/rconfig/config/functions.inc.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/home/rconfig/classes/spyc.class.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/lib/ajaxHandlers/ajaxEditTemplate.php'

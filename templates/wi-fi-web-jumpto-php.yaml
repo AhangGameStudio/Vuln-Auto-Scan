@@ -1,0 +1,15 @@
+id: '----wi-fi-web---jumpto-php---------'
+info:
+  author: pocscanner
+  description: 西迪特 Wi-Fi Web管理系统后台过滤不足导致远程命令执行漏洞
+  name: 西迪特 Wi-Fi Web管理 jumpto.php 后台命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

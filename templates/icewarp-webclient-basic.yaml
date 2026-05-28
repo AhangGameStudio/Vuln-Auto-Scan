@@ -1,0 +1,15 @@
+id: icewarp-webclient-basic---------
+info:
+  author: pocscanner
+  description: IceWarp WebClient 存在远程命令执行漏洞，攻击者构造特殊的请求即可远程命令执行
+  name: IceWarp WebClient basic 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

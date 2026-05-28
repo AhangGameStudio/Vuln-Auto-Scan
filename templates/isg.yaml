@@ -1,0 +1,15 @@
+id: '---isg---------'
+info:
+  author: pocscanner
+  description: 锐捷ISG 存在账号密码泄露漏洞，通过查看前端，可以获取密码的md5值, 解密后获取后台权限
+  name: 锐捷 ISG 账号密码泄露漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

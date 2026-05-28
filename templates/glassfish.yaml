@@ -1,0 +1,22 @@
+id: glassfish---------
+info:
+  author: pocscanner
+  description: '参考阅读：
+
+
+    - https://www.trustwave.com/Resources/Security-Advisories/Advisories/TWSL2015-016/?fid=6904
+
+
+    java语言中会把`%c0%ae`解析为`\uC0AE`，最后转义为ASCCII字符的`.`（点）。利用`%c0%ae%c0%ae/%c0%ae%c0%ae/%c0%ae%c0%ae/`来向上跳转，达到目录穿越、任意文件读取的效果。'
+  name: GlassFish 任意文件读取漏洞
+  reference:
+  - https://www.trustwave.com/Resources/Security-Advisories/Advisories/TWSL2015-016/?fid=6904
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

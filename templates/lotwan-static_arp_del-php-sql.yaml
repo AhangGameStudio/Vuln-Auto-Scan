@@ -1,0 +1,18 @@
+id: '-----lotwan--------static_arp_del-php-sql----'
+info:
+  author: pocscanner
+  description: 华夏创新 LotWan广域网优化系统check_instance_state.php文件参数 ins存在命令拼接，导致远程命令执行漏洞
+  name: 华夏创新 LotWan广域网优化系统 static_arp_del.php SQL注入漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/acc/bindipmac/static_arp_del.php'

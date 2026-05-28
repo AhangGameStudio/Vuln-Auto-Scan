@@ -1,0 +1,16 @@
+id: smartbi---------
+info:
+  author: pocscanner
+  description: Smartbi 大数据分析平台存在远程命令执行漏洞，未经身份认证的远程攻击者可利用 stub 接口构造请求绕过补丁限制，进而控制 JDBC
+    URL，最终可导致远程代码执行或信息泄露。
+  name: Smartbi 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

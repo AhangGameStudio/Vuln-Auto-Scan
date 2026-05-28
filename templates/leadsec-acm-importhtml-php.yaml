@@ -1,0 +1,38 @@
+id: '---leadsec-acm-----importhtml-php---------'
+info:
+  author: pocscanner
+  description: 网御 Leadsec ACM管理平台 importhtml.php文件存在SQL注入导致 远程命令执行漏洞
+  name: 网御 Leadsec ACM管理平台 importhtml.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/language_cn.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/language_en.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//xxx.xxx.xxx.xxx/importhtml.php'

@@ -1,0 +1,19 @@
+id: '---------------isc-logreport-php---------'
+info:
+  author: pocscanner
+  description: 浙江宇视科技 网络视频录像机 ISC /Interface/LogReport/LogReport.php 页面，fileString
+    参数过滤不严格，导致攻击者可执行任意命令
+  name: 浙江宇视科技 网络视频录像机 ISC LogReport.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/Interface/LogReport/LogReport.php'

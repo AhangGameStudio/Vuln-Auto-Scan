@@ -1,0 +1,18 @@
+id: '----topapp-lb-enable_tool_debug-php---------'
+info:
+  author: pocscanner
+  description: 天融信 TopSec-LB enable_tool_debug.php文件存在 远程命令执行漏洞，通过命令拼接攻击者可以执行任意命令
+  name: 天融信 TopApp-LB enable_tool_debug.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/acc/tools/enable_tool_debug.php'

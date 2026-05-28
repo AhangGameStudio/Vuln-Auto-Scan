@@ -1,0 +1,15 @@
+id: '---------erp---shiro-----------'
+info:
+  author: pocscanner
+  description: 云时空 社会化商业ERP为 Shiro框架 ，使用了默认的密钥导致了远程命令执行漏洞
+  name: 云时空 社会化商业ERP系统 Shiro框架 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

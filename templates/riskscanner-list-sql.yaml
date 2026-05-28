@@ -1,0 +1,15 @@
+id: riskscanner-list-sql----
+info:
+  author: pocscanner
+  description: Riskscanner list接口存在SQL注入漏洞，通过漏洞可获取服务器权限
+  name: Riskscanner list SQL注入漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

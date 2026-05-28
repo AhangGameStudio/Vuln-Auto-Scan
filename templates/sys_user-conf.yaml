@@ -1,0 +1,15 @@
+id: '-------------sys_user-conf---------'
+info:
+  author: pocscanner
+  description: 深信服 应用交付管理系统 文件sys_user.conf可在未授权的情况下直接访问，导致账号密码泄漏
+  name: 深信服 应用交付管理系统 sys_user.conf 账号密码泄漏漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

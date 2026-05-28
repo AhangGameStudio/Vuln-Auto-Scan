@@ -1,0 +1,15 @@
+id: '------t--upload-aspx---------'
+info:
+  author: pocscanner
+  description: 用友 畅捷通T+ Upload.aspx接口存在任意文件上传漏洞，攻击者通过 preload 参数绕过身份验证进行文件上传，控制服务器
+  name: 用友 畅捷通T+ Upload.aspx 任意文件上传漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

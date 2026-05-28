@@ -1,0 +1,18 @@
+id: casbin-get-users---------
+info:
+  author: pocscanner
+  description: Casbin get-users api接口存在账号密码泄漏漏洞，攻击者通过漏洞可以获取用户敏感信息
+  name: Casbin get-users 账号密码泄漏漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/get-users'

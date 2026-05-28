@@ -1,0 +1,48 @@
+id: '-----iaudit----get_luser_by_sshport-php---------'
+info:
+  author: pocscanner
+  description: 中远麒麟 iAudit堡垒机 get_luser_by_sshport.php文件存在命令拼接，攻击者通过漏洞可获取服务器权限
+  name: 中远麒麟 iAudit堡垒机 get_luser_by_sshport.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/opt/freesvr/web/htdocs/freesvr/audit/test.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/db_connect.inc.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//xxx.xxx.xxx.xxx/get_luser_by_sshport.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/global.func.php'

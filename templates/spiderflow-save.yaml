@@ -1,0 +1,18 @@
+id: spiderflow-save---------
+info:
+  author: pocscanner
+  description: 'SpiderFlow 平台以流程图的⽅式定义爬虫，是⼀个高度灵活可配置的爬虫平台
+
+
+    官⽹：https://www.spiderflow.org/'
+  name: SpiderFlow save 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,28 @@
+id: hikvision-ivms-8700---------upload-action---------
+info:
+  author: pocscanner
+  description: Hikvision iVMS-8700综合安防管理平台存在任意文件上传漏洞，攻击者通过发送特定的请求包可以上传Webshell文件控制服务器
+  name: Hikvision iVMS-8700综合安防管理平台 upload.action 任意文件上传漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/eps/resourceOperations/upload.action'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/eps/upload/769badc8ef5944da804a4ca3c8ecafb0.jsp'

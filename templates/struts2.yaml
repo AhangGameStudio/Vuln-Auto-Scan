@@ -1,0 +1,15 @@
+id: '-----------struts2---------'
+info:
+  author: pocscanner
+  description: 飞视美 视频会议系统 Struts2组件存在远程命令执行漏洞，通过漏洞攻击者可执行任意命令获取服务器权限
+  name: 飞视美 视频会议系统 Struts2 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

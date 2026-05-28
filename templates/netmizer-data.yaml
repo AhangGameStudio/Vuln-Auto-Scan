@@ -1,0 +1,15 @@
+id: netmizer--------data-------
+info:
+  author: pocscanner
+  description: 北京灵州网络技术有限公司NetMizer日志管理系统存在目录遍历漏洞，由于 /data 控制不严格，攻击者可利用该漏洞获取敏感信息。
+  name: NetMizer 日志管理系统 data 目录遍历漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

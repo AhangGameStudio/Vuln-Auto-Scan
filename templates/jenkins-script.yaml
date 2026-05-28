@@ -1,0 +1,15 @@
+id: jenkins-script------------
+info:
+  author: pocscanner
+  description: Jenkins 登录后访问 /script 页面，其中存在命令执行漏洞，当存在未授权的情况时导致服务器被入侵
+  name: Jenkins script 未授权远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

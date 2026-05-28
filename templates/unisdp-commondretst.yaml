@@ -1,0 +1,15 @@
+id: '-----unisdp----------commondretst-------'
+info:
+  author: pocscanner
+  description: 联软安界UniSDP软件定义边界系统是基于零信任的下一代VPN，该系统2021.04.28版本中TunnelGateway某接口存在安全漏洞，漏洞允许攻击者将特制请求发送到服务器并远程命令执行。
+  name: 联软安界 UniSDP 软件定义边界系统 commondRetSt 命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

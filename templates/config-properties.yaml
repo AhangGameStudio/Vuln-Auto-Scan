@@ -1,0 +1,15 @@
+id: '-------------config-properties-------'
+info:
+  author: pocscanner
+  description: 汇文 图书馆书目检索系统 /include/config.properties 文件中包含敏感信息，攻击者可以直接访问获取信息
+  name: 汇文 图书馆书目检索系统 config.properties 信息泄漏漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,28 @@
+id: '---v8--------pdf_maker-php-------'
+info:
+  author: pocscanner
+  description: 金山 V8 终端安全系统 pdf_maker.php 存在命令执行漏洞，由于没有过滤危险字符，导致构造特殊字符即可进行命令拼接执行任意命令
+  name: 金山 V8 终端安全系统 pdf_maker.php 命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//172.18.254.146/report/system/main.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/inter/pdf_maker.php'

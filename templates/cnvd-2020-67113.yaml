@@ -1,0 +1,29 @@
+id: cnvd-2020-67113
+info:
+  author: pocscanner
+  description: 零视技术(上海)有限公司是以领先的视频技术服务于客户，致力于物联网视频开发简单化，依托于HTML5 WebRTC 等新的技术，实现全平台视频播放简单化。
+    零视技术(上海)有限公司H5S CONSOLE存在未授权访问漏洞。攻击者可利用漏洞访问后台相应端口，执行未授权操作。
+  name: 零视科技 H5S视频平台 GetUserInfo 信息泄漏漏洞 CNVD-2020-67113
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/Login'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/GetUserInfo'

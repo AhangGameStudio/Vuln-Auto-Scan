@@ -1,0 +1,15 @@
+id: '----ajaxmethod-ashx-sql----'
+info:
+  author: pocscanner
+  description: 孚盟云 AjaxMethod.ashx文件存在SQL注入漏洞，攻击者通过漏洞可获取服务器权限
+  name: 孚盟云 AjaxMethod.ashx SQL注入漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

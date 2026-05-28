@@ -1,0 +1,26 @@
+id: apache-ssi---------
+info:
+  author: pocscanner
+  description: '在测试任意文件上传漏洞的时候，目标服务端可能不允许上传php后缀的文件。如果目标服务器开启了SSI与CGI支持，我们可以上传一个shtml文件，并利用`<!--#exec
+    cmd="id" -->`语法执行任意命令。
+
+
+    参考链接：
+
+
+    - https://httpd.apache.org/docs/2.4/howto/ssi.html
+
+    - https://www.w3.org/Jigsaw/Doc/User/SSI.html'
+  name: Apache SSI 远程命令执行漏洞
+  reference:
+  - https://httpd.apache.org/docs/2.4/howto/ssi.html
+  - https://www.w3.org/Jigsaw/Doc/User/SSI.html
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

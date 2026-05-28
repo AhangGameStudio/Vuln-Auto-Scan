@@ -1,0 +1,15 @@
+id: '----dlp--------'
+info:
+  author: pocscanner
+  description: 天融信DLP存在未授权访问漏洞
+  name: 天融信 DLP 未授权访问漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

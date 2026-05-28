@@ -1,0 +1,18 @@
+id: '---om-------proxy-php-------'
+info:
+  author: pocscanner
+  description: 魅课OM视频会议系统 proxy.php文件target参数存在本地文件包含漏洞。攻击者可借助该漏洞无需登录便可下载任意文件。
+  name: 魅课 OM视频会议系统 proxy.php 文件包含漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/do/proxy.php'

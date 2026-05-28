@@ -1,0 +1,18 @@
+id: '---patflow-showuser-php---sql----'
+info:
+  author: pocscanner
+  description: 百卓 Patflow showuser.php文件参数过滤不充分，导致后台存在SQL注入漏洞
+  name: 百卓 Patflow showuser.php 后台SQL注入漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/user/showuser.php'

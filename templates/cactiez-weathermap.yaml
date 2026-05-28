@@ -1,0 +1,32 @@
+id: cactiez-weathermap-----------
+info:
+  author: pocscanner
+  description: 'CactiEZ 中文版是 Cacti 中文解决方案，整合了 Spine，RRDTool 和美化字体。集成 Thold，Monitor，Syslog，Weathermap，Realtime，Errorimage，Mobile，Aggregate
+    以及 Apache，Squid，F5，Nginx，MySQL 等模板。
+
+
+    CactiEZ Weathermap 插件存在任意文件写入漏洞。'
+  name: CactiEZ weathermap 插件任意文件写入漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/plugins/weathermap/editor.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/plugins/weathermap/configs/test.php'

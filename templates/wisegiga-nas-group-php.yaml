@@ -1,0 +1,31 @@
+id: wisegiga-nas-group-php---------
+info:
+  author: pocscanner
+  description: 'WiseGiga 是一家销售网络连接存储（NAS ）产品的韩国公司。
+
+
+    WiseGiga NAS group.php文件存在远程命令执行漏洞，攻击者通过发送特定的请求包可以获取服务器权限'
+  name: WiseGiga NAS group.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/1.txt'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/group.php'

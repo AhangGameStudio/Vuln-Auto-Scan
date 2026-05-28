@@ -1,0 +1,15 @@
+id: '-------------------xss--'
+info:
+  author: pocscanner
+  description: 杭州法源软件开发有限公司开发的实践教学平台系统下的法律知识数据库系统登录后台用户名处存在通用XSS漏洞
+  name: 杭州法源软件 法律知识数据库系统 后台XSS漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

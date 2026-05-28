@@ -1,0 +1,18 @@
+id: '---sas----exec---------'
+info:
+  author: pocscanner
+  description: 绿盟 SAS堡垒机 Exec 远程命令执行漏洞
+  name: 绿盟 SAS堡垒机 Exec 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/Websvc/Response.php'

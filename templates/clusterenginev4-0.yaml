@@ -1,0 +1,15 @@
+id: --clusterenginev4-0---------
+info:
+  author: pocscanner
+  description: 浪潮ClusterEngineV4.0 存在任意用户登录漏洞，构造恶意的用户名和密码即可获取后台权限
+  name: 浪潮ClusterEngineV4.0 任意用户登录漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,15 @@
+id: '---uts-----------------'
+info:
+  author: pocscanner
+  description: 绿盟 UTS综合威胁探针 某个接口未做授权导致未授权漏洞
+  name: 绿盟 UTS综合威胁探针 信息泄露登陆绕过漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

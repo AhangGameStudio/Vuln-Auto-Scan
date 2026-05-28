@@ -1,0 +1,15 @@
+id: wayos-------------
+info:
+  author: pocscanner
+  description: Wayos 防火墙存在账号密码泄露漏洞，攻击者通过前端可以查看到密码的md5的加密字符，解密后可以登陆后台
+  name: Wayos 防火墙 账号密码泄露漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,16 @@
+id: '---k3cloud-binaryformatter-------'
+info:
+  author: pocscanner
+  description: 由于金蝶云星空能够使用 format 参数指定数据格式为二进制，攻击者可以通过发送由 BinaryFormatter 恶意序列化后的数据让服务端进行危险的BinaryFormatter
+    反序列化操作。反序列化过程中没有对数据进行签名或校验，导致攻击者可以在未授权状态下进行服务器远程代码执行。
+  name: 金蝶 K3Cloud BinaryFormatter 反序列化漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

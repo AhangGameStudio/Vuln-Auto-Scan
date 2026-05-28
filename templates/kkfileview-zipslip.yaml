@@ -1,0 +1,30 @@
+id: kkfileview-zipslip---------
+info:
+  author: pocscanner
+  description: 'kkFileView 是使用 Spring Boot 搭建的文档在线预览解决方案，能够支持多种主流办公文档的在线预览，如 doc、docx、xls、xlsx、ppt、pptx、pdf、txt、zip、rar
+    等格式。此外，还可以预览图片、视频、音频等多种类型的文件。
+
+
+    在 kkFileView 4.4.0-beta 以前，存在一处 ZipSlip 漏洞。攻击者可以利用该漏洞，向服务器任意目录下写入文件，导致任意命令执行漏洞。
+
+
+    参考链接：
+
+
+    - https://github.com/kekingcn/kkFileView/issues/553
+
+    - https://github.com/luelueking/kkFileView-v4.3.0-RCE-POC'
+  name: kkFileView ZipSlip 远程命令执行漏洞
+  reference:
+  - https://github.com/kekingcn/kkFileView/issues/553
+  - https://github.com/luelueking/kkFileView-v4.3.0-RCE-POC
+  - https://github.com/kekingcn/kkFileView/commit/421a2760d58ccaba4426b5e104938ca06cc49778
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

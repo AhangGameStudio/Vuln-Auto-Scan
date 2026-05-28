@@ -1,0 +1,21 @@
+id: tomcat8-------getshell--
+info:
+  author: pocscanner
+  description: "Tomcat支持在后台部署war文件，可以直接将webshell部署到web目录下。其中，欲访问后台，需要对应用户有相应权限。\n\n\
+    Tomcat7+权限分为：\n\n- manager（后台管理）\n  - manager-gui 拥有html页面权限\n  - manager-status\
+    \ 拥有查看status的权限\n  - manager-script 拥有text接口的权限，和status权限\n  - manager-jmx 拥有jmx权限，和status权限\n\
+    - host-manager（虚拟主机管理）\n  - admin-gui 拥有html页面权限\n  - admin-script 拥有text接口权限\n\
+    \n这些权限的究竟有什么作用，详情阅读 http://tomcat.apache.org/tomcat-8.5-doc/manager-howto.html\n\
+    \n在`conf/tomcat-users.xml`文件中配置用户的权限：\n\n```\n<?xml version=\"1.0\" encoding=\"\
+    UTF-8\"?>\n<tomcat-users xmlns=\"http://tomcat"
+  name: Tomcat8 弱口令+后台getshell漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

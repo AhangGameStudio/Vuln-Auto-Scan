@@ -1,0 +1,38 @@
+id: '---smart-importhtml-php---------'
+info:
+  author: pocscanner
+  description: 百卓 importhtml.php文件sql语句无过滤，通过Sql语句可远程命令执行
+  name: 百卓 Smart importhtml.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/language_cn.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/language_en.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//xxx.xxx.xxx.xxx/importhtml.php'

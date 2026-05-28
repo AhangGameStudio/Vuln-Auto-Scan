@@ -1,0 +1,15 @@
+id: hikvision----------user-xml---------
+info:
+  author: pocscanner
+  description: Hikvision 流媒体管理服务器配置文件未做鉴权，攻击者通过漏洞可以获取网站账号密码
+  name: Hikvision 流媒体管理服务器 user.xml 账号密码泄漏漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,18 @@
+id: sonarqube-search_projects---------
+info:
+  author: pocscanner
+  description: SonarQube 某接口存在信息泄露漏洞，可以通过工具下载源码
+  name: SonarQube search_projects 项目信息泄露漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/components/search_projects'

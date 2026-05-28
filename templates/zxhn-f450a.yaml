@@ -1,0 +1,15 @@
+id: '-----zxhn-f450a--------------'
+info:
+  author: pocscanner
+  description: 电信中兴ZXHN F450A网关 存在默认管理员账号密码
+  name: 电信 中兴ZXHN F450A网关 默认管理员账号密码漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

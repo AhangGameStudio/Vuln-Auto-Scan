@@ -1,0 +1,18 @@
+id: '----------------attachment_downloadbyurlatt-action---------'
+info:
+  author: pocscanner
+  description: 大华城市安防监控系统平台管理存在任意文件下载漏洞，攻击者通过漏洞可以下载服务器上的任意文件
+  name: 大华 城市安防监控系统平台管理 attachment_downloadByUrlAtt.action 任意文件下载漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/portal/attachment_downloadByUrlAtt.action'

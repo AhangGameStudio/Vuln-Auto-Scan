@@ -1,0 +1,18 @@
+id: '---------c-php---------'
+info:
+  author: pocscanner
+  description: 深信服 日志中心 c.php  远程命令执行漏洞，使用与EDR相同模板和部分文件导致命令执行
+  name: 深信服 日志中心 c.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/tool/log/c.php'

@@ -1,0 +1,15 @@
+id: nginxwebui-cmdover---------
+info:
+  author: pocscanner
+  description: nginxWebUI 后台存在命令执行漏洞，攻击者登录后台后可以执行任意命令获取服务器权限
+  name: nginxWebUI cmdOver 后台命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

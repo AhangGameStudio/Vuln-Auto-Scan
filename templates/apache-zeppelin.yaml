@@ -1,0 +1,15 @@
+id: apache-zeppelin------------
+info:
+  author: pocscanner
+  description: Apache Zeppelin 存在未授权的用户访问命令执行接口，导致了任意用户都可以执行恶意命令获取服务器权限
+  name: Apache Zeppelin 未授权任意命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,32 @@
+id: xxl-job-executor--------
+info:
+  author: pocscanner
+  description: 'XXL-JOB 是一个分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。XXL-JOB
+    分为 admin 和 executor 两端，前者为后台管理页面，后者是任务执行的客户端。
+
+
+    由于 executor 默认没有配置认证，未授权的攻击者可以通过 RESTful API 执行任意命令。
+
+
+    参考链接：
+
+
+    - https://mp.weixin.qq.com/s/jzXIVrEl0vbjZxI4xlUm-g
+
+    - https://landgrey.me/blog/18/
+
+    - https://github.com/OneSourceCat/XxlJob-Hessian-RCE'
+  name: XXL-JOB executor 未授权访问漏洞
+  reference:
+  - https://mp.weixin.qq.com/s/jzXIVrEl0vbjZxI4xlUm-g
+  - https://landgrey.me/blog/18/
+  - https://github.com/OneSourceCat/XxlJob-Hessian-RCE
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

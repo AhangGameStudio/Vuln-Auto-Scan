@@ -1,0 +1,29 @@
+id: xxl-job-----------
+info:
+  author: pocscanner
+  description: 'XXL-JOB 是一个分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。XXL-JOB
+    分为 admin 和 executor 两端，前者为后台管理页面，后者是任务执行的客户端。
+
+
+    若 XXL-JOB 后台管理页面存在弱口令，攻击者可在 GLUE 模式任务代码中写入攻击代码并推送到执行器执行，从而获取服务器权限。
+
+
+    参考链接：
+
+
+    - https://github.com/xuxueli/xxl-job/issues/2979
+
+    - https://mp.weixin.qq.com/s/jzXIVrEl0vbjZxI4xlUm-g'
+  name: XXL-JOB 后台任意命令执行漏洞
+  reference:
+  - https://github.com/xuxueli/xxl-job/issues/2979
+  - https://mp.weixin.qq.com/s/jzXIVrEl0vbjZxI4xlUm-g
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

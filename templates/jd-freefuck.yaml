@@ -1,0 +1,18 @@
+id: jd-freefuck---------
+info:
+  author: pocscanner
+  description: 'JD-FreeFuck 存在后台命令执行漏洞，由于传参执行命令时没有对内容过滤，导致可以执行任意命令，控制服务器
+
+
+    项目地址： https://github.com/meselson/JD-FreeFuck'
+  name: JD-FreeFuck 后台命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

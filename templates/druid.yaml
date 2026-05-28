@@ -1,0 +1,15 @@
+id: '-------druid-----'
+info:
+  author: pocscanner
+  description: 若依管理系统使用了Druid 默认开启了匿名访问，导致未授权获取敏感信息
+  name: 若依管理系统 Druid未授权访问
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

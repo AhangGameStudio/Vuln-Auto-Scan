@@ -1,0 +1,18 @@
+id: evolucare-ecsimaging-download_stats_dicom-php---------
+info:
+  author: pocscanner
+  description: Evolucare Ecsimaging download_stats_dicom.php 存在文件读取漏洞,攻击者可利用该漏洞获取系统敏感信息等.
+  name: Evolucare Ecsimaging download_stats_dicom.php 任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/download_stats_dicom.php'

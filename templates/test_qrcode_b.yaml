@@ -1,0 +1,15 @@
+id: '-------------test_qrcode_b---------'
+info:
+  author: pocscanner
+  description: 思福迪运维安全管理系统是思福迪开发的一款运维安全管理堡垒机。思福迪运维安全管理系统 test_qrcode_b 路由存在命令执行漏洞。
+  name: 思福迪 运维安全管理系统 test_qrcode_b 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

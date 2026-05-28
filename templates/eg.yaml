@@ -1,0 +1,18 @@
+id: '---eg---------------'
+info:
+  author: pocscanner
+  description: 锐捷EG易网关 login.php存在 CLI命令注入，导致管理员账号密码泄露漏洞
+  name: 锐捷 EG易网关 管理员账号密码泄露漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/login.php'

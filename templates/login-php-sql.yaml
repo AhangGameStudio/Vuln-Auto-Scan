@@ -1,0 +1,18 @@
+id: '------------login-php-sql----'
+info:
+  author: pocscanner
+  description: 电信网关配置管理系统 前台登陆页面用户名参数存在SQL注入漏洞
+  name: 电信 网关配置管理系统 login.php SQL注入漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/manager/login.php'

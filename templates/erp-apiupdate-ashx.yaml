@@ -1,0 +1,15 @@
+id: '----erp--------apiupdate-ashx---------'
+info:
+  author: pocscanner
+  description: 明源云 ERP系统接口管家 ApiUpdate.ashx 文件存在任意文件上传漏洞，攻击者通过构造特殊的ZIP压缩包可以上传任意文件，控制服务器
+  name: 明源云 ERP系统 接口管家 ApiUpdate.ashx 任意文件上传漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

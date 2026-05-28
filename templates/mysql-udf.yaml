@@ -1,0 +1,26 @@
+id: mysql-udf-----
+info:
+  author: pocscanner
+  description: 'UDF 是 MySQL 的一个共享库，通过 udf 创建能够执行系统命令的函数 sys_exec、sys_eval，使得入侵者能够获得一般情况下无法获得的
+    shell 执行权限。
+
+
+    参考链接：
+
+
+    - https://github.com/mysqludf/lib_mysqludf_sys
+
+    - https://www.sqlsec.com/2020/11/mysql.html#%E5%86%99%E5%85%A5%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93'
+  name: MySQL UDF 提权漏洞
+  reference:
+  - https://github.com/mysqludf/lib_mysqludf_sys
+  - https://www.sqlsec.com/2020/11/mysql.html#%E5%86%99%E5%85%A5%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

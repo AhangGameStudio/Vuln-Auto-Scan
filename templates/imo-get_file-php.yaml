@@ -1,0 +1,18 @@
+id: imo------get_file-php---------
+info:
+  author: pocscanner
+  description: imo 云办公室 /file/NDisk/get_file.php 过滤不严格导致允许无限制地上传文件，攻击者可以通过该漏洞直接获取网站权限。
+  name: imo 云办公室 get_file.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/file/NDisk/get_file.php'

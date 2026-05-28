@@ -1,0 +1,15 @@
+id: --crm-------------
+info:
+  author: pocscanner
+  description: 畅捷CRM 后台附件存在任意文件上传漏洞，通过解析漏洞可跳过后缀更改获取网站权限
+  name: 畅捷CRM 后台附件任意文件上传漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

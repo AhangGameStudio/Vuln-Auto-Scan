@@ -1,0 +1,15 @@
+id: kyan--------run-php---------
+info:
+  author: pocscanner
+  description: Kyan 网络监控设备 run.php可在身份验证的情况下执行任意命令, 配合账号密码泄露漏洞，可以获取服务器权限，存在远程命令执行漏洞
+  name: Kyan 网络监控设备 run.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

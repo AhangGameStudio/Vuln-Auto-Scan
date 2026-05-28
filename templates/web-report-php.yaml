@@ -1,0 +1,15 @@
+id: '-----web------report-php---------'
+info:
+  author: pocscanner
+  description: 安恒 明御WEB应用防火墙 report.php文件存在硬编码设置的Console用户登录，攻击者可以通过漏洞直接登录后台
+  name: 安恒 明御WEB应用防火墙 report.php 任意用户登录漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

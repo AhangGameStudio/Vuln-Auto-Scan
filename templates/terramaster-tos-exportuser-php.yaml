@@ -1,0 +1,38 @@
+id: terramaster-tos-exportuser-php-------
+info:
+  author: pocscanner
+  description: TerraMaster TOS exportUser.php 文件中存在远程命令执行漏洞
+  name: TerraMaster TOS exportUser.php 远程命令执行
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/class/application.class.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//xxx.xxx.xxx.xxx/include/exportUser.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/app.php'

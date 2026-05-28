@@ -1,0 +1,15 @@
+id: '-------f460-web_shell_cmd-gch---------'
+info:
+  author: pocscanner
+  description: 电信天翼网关F460 web_shell_cmd.gch文件存在命令调试界面，攻击者可以利用获取服务器权限
+  name: 电信 天翼网关F460 web_shell_cmd.gch 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

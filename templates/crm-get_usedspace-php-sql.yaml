@@ -1,0 +1,18 @@
+id: --crm-get_usedspace-php-sql----
+info:
+  author: pocscanner
+  description: 畅捷CRM get_usedspace.php存在SQL漏洞，通过漏洞可获取数据库敏感信息
+  name: 畅捷CRM get_usedspace.php SQL注入漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/webservice/get_usedspace.php'

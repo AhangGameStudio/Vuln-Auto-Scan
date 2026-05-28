@@ -1,0 +1,15 @@
+id: '---hg6245d-info-asp-------'
+info:
+  author: pocscanner
+  description: 烽火 HG6245D info.asp页面存在信息泄露漏洞，通过漏洞可获取内网连接用户MAC地址以及系统运行状态
+  name: 烽火 HG6245D info.asp 信息泄露漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

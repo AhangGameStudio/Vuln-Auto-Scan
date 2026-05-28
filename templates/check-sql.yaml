@@ -1,0 +1,15 @@
+id: '-----------check-sql----'
+info:
+  author: pocscanner
+  description: 汉王人脸考勤管理系统存在SQL注入漏洞，攻击者可利用该漏洞获取数据库敏感信息。
+  name: 汉王人脸考勤管理系统 Check SQL注入漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

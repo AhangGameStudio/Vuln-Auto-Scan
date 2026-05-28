@@ -1,0 +1,18 @@
+id: e-message-------
+info:
+  author: pocscanner
+  description: E-message 存在越权访问漏洞，由于配置页面没有做权限设定，导致攻击者可以访问并重置账号密码等操作
+  name: E-message 越权访问漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//xxx.xxx.xxx.xxx/setup/setup-datasource-standard.jsp'

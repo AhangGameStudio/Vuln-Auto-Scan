@@ -1,0 +1,15 @@
+id: cnvd-2021-57336
+info:
+  author: pocscanner
+  description: 金笛 短信中间件Web版后台存在任意文件下载漏洞，攻击者通过漏洞可以获取服务器任意文件信息
+  name: 金笛 短信中间件Web版 log 后台任意文件下载漏洞 CNVD-2021-57336
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

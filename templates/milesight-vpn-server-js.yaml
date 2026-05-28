@@ -1,0 +1,15 @@
+id: milesight-vpn-server-js---------
+info:
+  author: pocscanner
+  description: MilesightVPN 是一款软件，可使 Milesight 产品的 VPN 通道设置过程更加简便，并可通过网络服务器界面监控连接状态。其中存在任意文件读取漏洞，攻击者通过漏洞可以获取服务器中敏感文件
+  name: Milesight VPN server.js 任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

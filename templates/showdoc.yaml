@@ -1,0 +1,22 @@
+id: showdoc---------
+info:
+  author: pocscanner
+  description: '参考链接：
+
+
+    - https://github.com/star7th/showdoc/pull/1059'
+  name: ShowDoc 前台文件上传漏洞
+  reference:
+  - https://github.com/star7th/showdoc/pull/1059
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/server/index.php'

@@ -1,0 +1,28 @@
+id: '--------------user_getuserinfobyusername-action---------'
+info:
+  author: pocscanner
+  description: 大华 智慧园区综合管理平台 user_getUserInfoByUserName.action 中存在API接口，导致管理园账号密码泄漏
+  name: 大华 智慧园区综合管理平台 user_getUserInfoByUserName.action 账号密码泄漏漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/user_getUserInfoByUserName.action'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/login_login.action'

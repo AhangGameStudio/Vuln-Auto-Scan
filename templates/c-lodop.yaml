@@ -1,0 +1,15 @@
+id: c-lodop-----------
+info:
+  author: pocscanner
+  description: C-Lodop打印机存在任意文件读取漏洞，通过构造特殊URL，可实现读取系统任意文件。
+  name: C-Lodop打印机任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

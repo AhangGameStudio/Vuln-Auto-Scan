@@ -1,0 +1,31 @@
+id: example-sqli
+name: SQL 注入示例检测
+severity: 高危
+method: GET
+path: /
+payload: id=1' OR '1'='1
+matchers:
+  - type: status
+    value: 200
+  - type: body
+    pattern: SQL
+---
+id: example-xss
+name: XSS 漏洞示例检测
+severity: 中危
+method: GET
+path: /search
+payload: q=<script>alert(1)</script>
+matchers:
+  - type: body
+    pattern: <script>alert(1)</script>
+---
+id: example-path
+name: 路径穿越示例检测
+severity: 高危
+method: GET
+path: /
+payload: file=../../../etc/passwd
+matchers:
+  - type: body
+    pattern: "root:"

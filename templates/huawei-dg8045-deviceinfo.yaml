@@ -1,0 +1,18 @@
+id: huawei-dg8045-deviceinfo-------
+info:
+  author: pocscanner
+  description: Huawei DG8045 deviceinfo api接口存在信息泄漏漏洞，攻击者通过泄漏的信息可以获得账号密码登录后台
+  name: Huawei DG8045 deviceinfo 信息泄漏漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/system/deviceinfo'

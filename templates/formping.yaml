@@ -1,0 +1,15 @@
+id: '--------formping---------'
+info:
+  author: pocscanner
+  description: 才茂通信网关 formping 接口存在远程命令执行漏洞，攻击者通过默认口令 admin/admin 登陆系统后通过命令可以获取服务器权限
+  name: 才茂通信 网关 formping 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

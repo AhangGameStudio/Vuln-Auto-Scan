@@ -1,0 +1,15 @@
+id: h3c-------er-erg2-gr-----------
+info:
+  author: pocscanner
+  description: H3C企业路由器（ER、ERG2、GR系列）存在任意用户登录和命令执行漏洞，
+  name: H3C 企业路由器（ER、ERG2、GR系列）任意用户登录漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

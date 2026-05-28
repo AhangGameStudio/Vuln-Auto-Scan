@@ -1,0 +1,18 @@
+id: selea-ocr-anpr----get_file-php---------
+info:
+  author: pocscanner
+  description: Selea OCR-ANPR摄像机 get_file.php存在 任意文件读取漏洞，通过构造特殊请求获取服务器文件
+  name: Selea OCR-ANPR摄像机 get_file.php 任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/cgi-bin/get_file.php'

@@ -1,0 +1,21 @@
+id: 1panel-loadfile---------
+info:
+  author: pocscanner
+  description: '1Panel 是一个现代化、开源的Linux 服务器运维管理面板。
+
+
+    1Panel 后台存在任意文件读取漏洞，攻击者通过漏洞可以获取服务器中的敏感信息文件'
+  name: 1Panel loadfile 后台文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/file/loadfile'

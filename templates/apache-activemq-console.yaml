@@ -1,0 +1,15 @@
+id: apache-activemq-console---------
+info:
+  author: pocscanner
+  description: Apache ActiveMQ Console 存在默认弱口令 admin:admin，进入控制台后可被进一步恶意利用
+  name: Apache ActiveMQ Console 控制台默认弱口令
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

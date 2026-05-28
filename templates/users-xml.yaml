@@ -1,0 +1,15 @@
+id: '--------users-xml------'
+info:
+  author: pocscanner
+  description: 博华网龙防火墙 users.xml文件 可被任意用户读取，其中包含登录的账号密码
+  name: 博华网龙防火墙 users.xml 未授权访问
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

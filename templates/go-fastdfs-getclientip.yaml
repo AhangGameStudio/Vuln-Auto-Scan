@@ -1,0 +1,15 @@
+id: go-fastdfs-getclientip--------
+info:
+  author: pocscanner
+  description: Go-fastdfs GetClientIp方法存在XFF头绕过漏洞，攻击者通过漏洞可以未授权调用接口，获取配置文件等敏感信息
+  name: Go-fastdfs GetClientIp 未授权访问漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

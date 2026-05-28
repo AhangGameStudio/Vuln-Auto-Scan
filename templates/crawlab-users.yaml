@@ -1,0 +1,18 @@
+id: crawlab-users---------
+info:
+  author: pocscanner
+  description: Crawlab users 的 api 存在任意用户添加，且添加为未授权接口，可通过添加后在后台进一步攻击
+  name: Crawlab users 任意用户添加漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/users'

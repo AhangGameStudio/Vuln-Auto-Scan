@@ -1,0 +1,18 @@
+id: '----------------selectimage-aspx---------'
+info:
+  author: pocscanner
+  description: '任我行率先针对中小企业推出了管家婆进销存、财务一体化软件。
+
+
+    管家婆订货易在线商城存在 SelectImage.aspx 任意文件上传漏洞，攻击者可通过该漏洞可控制整个系统，最终导致系统处于极度不安全状态。'
+  name: 任我行 管家婆 订货易在线商城 SelectImage.aspx 任意文件上传漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,15 @@
+id: d-link-sharecenter-dns-320-system_mgr-cgi---------
+info:
+  author: pocscanner
+  description: D-Link ShareCenter DNS-320 system_mgr.cgi 存在远程命令执行，攻击者通过漏洞可以控制服务器
+  name: D-Link ShareCenter DNS-320 system_mgr.cgi 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

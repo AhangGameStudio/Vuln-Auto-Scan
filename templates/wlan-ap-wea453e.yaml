@@ -1,0 +1,15 @@
+id: '---wlan-ap-wea453e------------'
+info:
+  author: pocscanner
+  description: 三星 WLAN AP WEA453e路由器 存在远程命令执行漏洞，可在未授权的情况下执行任意命令获取服务器权限。
+  name: 三星 WLAN AP WEA453e路由器 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

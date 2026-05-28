@@ -1,0 +1,15 @@
+id: iceflow-vpn-------
+info:
+  author: pocscanner
+  description: ICEFlow VPN 存在信息泄露漏洞，攻击者可以查看日志中的敏感数据来进一步攻击系统
+  name: ICEFlow VPN 信息泄露漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

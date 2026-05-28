@@ -1,0 +1,22 @@
+id: struts2-s2-053---------
+info:
+  author: pocscanner
+  description: '漏洞详情:
+
+
+    - http://struts.apache.org/docs/s2-053.html
+
+    - https://mp.weixin.qq.com/s?__biz=MzU0NTI4MDQwMQ==&mid=2247483663&idx=1&sn=6304e1469f23c33728ab5c73692b675e'
+  name: Struts2 S2-053 远程代码执行漏洞
+  reference:
+  - http://struts.apache.org/docs/s2-053.html
+  - https://mp.weixin.qq.com/s?__biz=MzU0NTI4MDQwMQ==&mid=2247483663&idx=1&sn=6304e1469f23c33728ab5c73692b675e
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

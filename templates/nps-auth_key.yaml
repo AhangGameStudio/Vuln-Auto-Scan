@@ -1,0 +1,15 @@
+id: nps-auth_key--------
+info:
+  author: pocscanner
+  description: NPS auth_key 存在未授权访问漏洞，当 nps.conf 中的 auth_key 未配置时攻击者通过生成特定的请求包可以获取服务器后台权限
+  name: NPS auth_key 未授权访问漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

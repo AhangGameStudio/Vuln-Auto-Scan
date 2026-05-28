@@ -1,0 +1,134 @@
+id: example-sqli-detection
+info:
+  name: SQL 注入检测示例
+  author: pocscanner
+  severity: high
+  description: 检测常见的 SQL 注入漏洞
+  tags:
+    - sqli
+    - injection
+    - owasp
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/id=1'"
+      - "{{BaseURL}}/id=1' OR '1'='1"
+      - "{{BaseURL}}/id=1; WAITFOR DELAY '0:0:5'--"
+    headers:
+      User-Agent: "Mozilla/5.0 (Nuclei-Scanner)"
+      Accept: "text/html,application/json"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 500
+      
+      - type: word
+        words:
+          - "SQL syntax"
+          - "mysql_fetch"
+          - "ORA-"
+          - "PostgreSQL"
+          - "SQLite"
+      
+      - type: regex
+        regex:
+          - "(?i)sql.*(syntax|error)"
+          - "ORA-\\d+"
+---
+id: example-xss-detection
+info:
+  name: XSS 漏洞检测示例
+  author: pocscanner
+  severity: medium
+  description: 检测反射型 XSS 漏洞
+  tags:
+    - xss
+    - reflected
+    - owasp
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/search?q=<script>alert(1)</script>"
+      - "{{BaseURL}}/search?q=<img src=x onerror=alert(1)>"
+    headers:
+      User-Agent: "Mozilla/5.0 (Nuclei-Scanner)"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      
+      - type: word
+        words:
+          - "<script>alert(1)</script>"
+          - "<img src=x onerror=alert(1)>"
+---
+id: example-path-traversal
+info:
+  name: 路径穿越漏洞检测
+  author: pocscanner
+  severity: high
+  description: 检测目录遍历漏洞
+  tags:
+    - lfi
+    - path-traversal
+    - owasp
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/file?name=../../../etc/passwd"
+      - "{{BaseURL}}/download?file=....//....//etc/passwd"
+    headers:
+      User-Agent: "Mozilla/5.0 (Nuclei-Scanner)"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      
+      - type: regex
+        regex:
+          - "root:.*:0:0:"
+          - "bin/bash"
+---
+id: example-info-leak
+info:
+  name: 敏感信息泄露检测
+  author: pocscanner
+  severity: medium
+  description: 检测.git/config 等敏感文件泄露
+  tags:
+    - info-leak
+    - git
+    - misconfiguration
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/.git/config"
+      - "{{BaseURL}}/.env"
+      - "{{BaseURL}}/config.json"
+    headers:
+      User-Agent: "Mozilla/5.0 (Nuclei-Scanner)"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      
+      - type: word
+        words:
+          - "[core]"
+          - "repositoryformatversion"
+          - "DB_PASSWORD"
+          - "API_KEY"
+      
+      - type: regex
+        regex:
+          - "\\[core\\]"
+          - "password\\s*=\\s*['\"]?\\w+"

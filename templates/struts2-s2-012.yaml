@@ -1,0 +1,22 @@
+id: struts2-s2-012---------
+info:
+  author: pocscanner
+  description: "如果在配置 Action 中 Result 时使用了重定向类型，并且还使用 ${param_name} 作为重定向变量，例如：\n\n\
+    ```\n<package name=\"S2-012\" extends=\"struts-default\">\n    <action name=\"\
+    user\" class=\"com.demo.action.UserAction\">\n        <result name=\"redirect\"\
+    \ type=\"redirect\">/index.jsp?name=${name}</result>\n        <result name=\"\
+    input\">/index.jsp</result>\n        <result name=\"success\">/index.jsp</result>\n\
+    \    </action>\n</package>\n```\n\n这里 UserAction 中定义有一个 name 变量，当触发 redirect 类型返回时，Struts2\
+    \ 获取使用 ${name} 获取其值，在这个过程中会对 name 参数的值执行 OGNL 表达式解析，从而可以插"
+  name: Struts2 S2-012 远程代码执行漏洞
+  reference:
+  - http://struts.apache.org/docs/s2-012.html
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

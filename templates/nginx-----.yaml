@@ -1,0 +1,39 @@
+id: nginx-----
+info:
+  author: pocscanner
+  description: 'Nginx解析漏洞复现。
+
+
+    版本信息：
+
+
+    - Nginx 1.x 最新版
+
+    - PHP 7.x最新版
+
+
+    由此可知，该漏洞与Nginx、php版本无关，属于用户配置不当造成的解析漏洞。'
+  name: Nginx 解析漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//your-ip/index.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}//your-ip/uploadfiles/fb5c81ed3a220004b71069645f112867.png/.php'

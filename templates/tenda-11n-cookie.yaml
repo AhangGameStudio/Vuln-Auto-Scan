@@ -1,0 +1,15 @@
+id: tenda-11n------cookie-------
+info:
+  author: pocscanner
+  description: Tenda 11N无线路由器由于只验证Cookie，导致任意用户伪造Cookie即可进入后台
+  name: Tenda 11N无线路由器 Cookie 越权访问漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

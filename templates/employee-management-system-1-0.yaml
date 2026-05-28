@@ -1,0 +1,31 @@
+id: '-------employee-management-system-1-0-------'
+info:
+  author: pocscanner
+  description: '漏洞发现时间：2020-10-16
+
+
+    软件下载地址：https://www.sourcecodester.com/sites/default/files/download/razormist/employee-management-system.zip
+
+
+    验证环境：Windows 10 + xampp v3.2.4
+
+
+    参考链接：
+
+
+    - https://www.exploit-db.com/exploits/48882'
+  name: 员工管理系统 Employee Management System 1.0 身份验证绕过
+  reference:
+  - https://www.exploit-db.com/exploits/48882
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/process/aprocess.php'

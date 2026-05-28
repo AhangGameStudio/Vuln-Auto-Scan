@@ -1,0 +1,15 @@
+id: '---------moni_detail-do---------'
+info:
+  author: pocscanner
+  description: 亿邮电子邮件系统 存在远程命令执行漏洞，攻击者可以执行任意命令
+  name: 亿邮电子邮件系统 moni_detail.do 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

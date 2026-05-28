@@ -1,0 +1,15 @@
+id: jcg-jhr-n835r---------
+info:
+  author: pocscanner
+  description: JCG JHR-N835R 后台存在命令执行，通过 ; 分割 ping 命令导致任意命令执行
+  name: JCG JHR-N835R 后台命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

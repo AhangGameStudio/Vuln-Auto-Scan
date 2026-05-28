@@ -1,0 +1,18 @@
+id: flir-ax8-res-php---------
+info:
+  author: pocscanner
+  description: FLIR-AX8 res.php 文件存在后台命令执行漏洞，攻击者通过默认口令登录后台后获取服务器权限
+  name: FLIR-AX8 res.php 后台命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/res.php'

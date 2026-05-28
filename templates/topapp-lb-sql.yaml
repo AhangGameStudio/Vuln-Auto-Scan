@@ -1,0 +1,18 @@
+id: '----topapp-lb-sql----'
+info:
+  author: pocscanner
+  description: 天融信负载均衡 TopAPP-LB产品旧版本在管理面存在SQL注入漏洞，具体为在可以访问管理服务情况 下，攻击者通过构造恶意请求，利用系统检查输入条件不严格的缺陷，进一步可获取部分系统本地信息
+  name: 天融信 TopApp-LB SQL注入漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/acc/clsf/report/datasource.php'

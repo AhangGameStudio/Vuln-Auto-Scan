@@ -1,0 +1,16 @@
+id: hadoop-yarn-resourcemanager------
+info:
+  author: pocscanner
+  description: '- 参考阅读： [http://archive.hack.lu/2016/Wavestone%20-%20Hack.lu%202016%20-%20Hadoop%20safari%20-%20Hunting%20for%20vulnerabilities%20-%20v1.0.pdf](http://archive.hack.lu/2016/Wavestone
+    - Hack.lu 2016 - Hadoop safari - Hunting for vulnerabilities - v1.0.pdf)'
+  name: Hadoop YARN ResourceManager 未授权访问
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

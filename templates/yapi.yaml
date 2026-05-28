@@ -1,0 +1,15 @@
+id: yapi----------------
+info:
+  author: pocscanner
+  description: YApi 接口管理平台 后台存在命令执行漏洞，攻击者通过发送特定的请求可执行任意命令获取服务器权限
+  name: YApi 接口管理平台 后台命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

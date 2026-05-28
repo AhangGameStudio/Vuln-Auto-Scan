@@ -1,0 +1,18 @@
+id: '--------cmd-php---------'
+info:
+  author: pocscanner
+  description: 博华网龙防火墙 cmd.php 过滤不足，导致命令拼接执行远程命令
+  name: 博华网龙防火墙 cmd.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/diagnostics/cmd.php'

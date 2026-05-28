@@ -1,0 +1,15 @@
+id: '----------gnremote-dll-sql----'
+info:
+  author: pocscanner
+  description: 用友 畅捷通远程通 GNRemote.dll SQL注入漏洞，攻击者通过SQL注入可以获取服务器敏感信息或者使用万能密码登录设备
+  name: 用友 畅捷通远程通 GNRemote.dll SQL注入漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

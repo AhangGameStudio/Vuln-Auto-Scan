@@ -1,0 +1,15 @@
+id: cnvd-2021-01931
+info:
+  author: pocscanner
+  description: 若依管理系统是基于SpringBoot的权限管理系统,登录后台后可以读取服务器上的任意文件
+  name: 若依管理系统 后台任意文件读取 CNVD-2021-01931
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,15 @@
+id: '-----home-------'
+info:
+  author: pocscanner
+  description: 思迪数据存在登录绕过漏洞，通过访问特殊路径即可获取后台权限
+  name: 思迪数据 Home 登录绕过漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

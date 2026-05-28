@@ -1,0 +1,28 @@
+id: magento-2-2-sql----
+info:
+  author: pocscanner
+  description: 'Magento（麦进斗）是一款新的专业开源电子商务平台，采用php进行开发，使用Zend Framework框架。设计得非常灵活，具有模块化架构体系和丰富的功能。
+
+
+    其prepareSqlCondition函数存在一处二次格式化字符串的bug，导致引入了非预期的单引号，造成SQL注入漏洞。
+
+
+    参考链接：
+
+
+    - https://www.ambionics.io/blog/magento-sqli
+
+    - https://devdocs.magento.com/guides/v2.2/release-notes/ReleaseNotes2.2.8CE.html'
+  name: Magento 2.2 SQL注入漏洞
+  reference:
+  - https://www.ambionics.io/blog/magento-sqli
+  - https://devdocs.magento.com/guides/v2.2/release-notes/ReleaseNotes2.2.8CE.html
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

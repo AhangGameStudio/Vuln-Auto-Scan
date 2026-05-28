@@ -1,0 +1,15 @@
+id: '------------pki_file_download---------'
+info:
+  author: pocscanner
+  description: 网神下一代极速防火墙 pki_file_download 存在任意文件读取漏洞，攻击者可以通过漏洞获取服务器上的任意文件
+  name: 网神 下一代极速防火墙 pki_file_download 任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

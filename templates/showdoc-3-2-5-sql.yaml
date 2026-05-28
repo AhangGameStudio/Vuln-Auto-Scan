@@ -1,0 +1,25 @@
+id: showdoc-3-2-5-sql-----
+info:
+  author: pocscanner
+  description: 'ShowDoc 是一个开源的在线共享文档工具。
+
+
+    ShowDoc <= 3.2.5 存在一处未授权 SQL 注入漏洞，攻击者可以利用该漏洞窃取保存在 SQLite 数据库中的用户密码和 Token。
+
+
+    参考链接：
+
+
+    - https://github.com/star7th/showdoc/commit/84fc28d07c5dfc894f5fbc6e8c42efd13c976fda'
+  name: ShowDoc 3.2.5 SQL 注入漏洞
+  reference:
+  - https://github.com/star7th/showdoc/commit/84fc28d07c5dfc894f5fbc6e8c42efd13c976fda
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

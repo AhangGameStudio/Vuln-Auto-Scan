@@ -1,0 +1,18 @@
+id: gerapy-parse-----------
+info:
+  author: pocscanner
+  description: Gerapy gerapy/server/core/views.py 中的方法存在任意命令执行，攻击者登录后台后发送特定的请求包即可利用漏洞
+  name: Gerapy parse 后台远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/project/1/parse'

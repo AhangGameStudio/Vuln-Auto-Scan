@@ -1,0 +1,15 @@
+id: --clusterenginev4-0-sysshell---------
+info:
+  author: pocscanner
+  description: 浪潮ClusterEngineV4.0 存在远程命令执行，攻击者通过发送特殊的请求可以获取服务器权限
+  name: 浪潮ClusterEngineV4.0 sysShell 任意命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

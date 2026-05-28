@@ -1,0 +1,25 @@
+id: tg8-----rce-------
+info:
+  author: pocscanner
+  description: 'TG8防火墙中存在两个漏洞，远程用户可以以用户身份执行命令而无需通过设备进行身份验证。第二个漏洞允许在不经过身份验证的情况下公开现有用户的密码。
+
+
+    参考链接：
+
+
+    - https://ssd-disclosure.com/ssd-advisory-tg8-firewall-preauth-rce-and-password-disclosure/'
+  name: TG8 防火墙 RCE及密码泄漏漏洞
+  reference:
+  - https://ssd-disclosure.com/ssd-advisory-tg8-firewall-preauth-rce-and-password-disclosure/
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/admin/runphpcmd.php'

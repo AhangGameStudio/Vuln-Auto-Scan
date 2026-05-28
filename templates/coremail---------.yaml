@@ -1,0 +1,15 @@
+id: coremail---------
+info:
+  author: pocscanner
+  description: Coremail 某个接口存在配置信息泄露漏洞，其中存在端口，配置信息等
+  name: Coremail 配置信息泄露漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

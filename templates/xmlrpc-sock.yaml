@@ -1,0 +1,15 @@
+id: '-----------------xmlrpc-sock---------'
+info:
+  author: pocscanner
+  description: 安恒 明御运维审计与风险控制系统 xmlrpc.sock 接口存在SSRF漏洞，通过漏洞可以添加任意用户控制堡垒机
+  name: 安恒 明御运维审计与风险控制系统 xmlrpc.sock 任意用户添加漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

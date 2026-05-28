@@ -1,0 +1,15 @@
+id: '-----web-----------'
+info:
+  author: pocscanner
+  description: 网御星云 web防护系统 存在信息泄露漏洞，通过访问特殊的Url获取部分敏感信息
+  name: 网御星云 web防护系统 信息泄露漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

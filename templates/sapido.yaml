@@ -1,0 +1,15 @@
+id: sapido---------------
+info:
+  author: pocscanner
+  description: Sapido多款路由器在未授权的情况下，导致任意访问者可以以Root权限执行命令
+  name: Sapido 多款路由器 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

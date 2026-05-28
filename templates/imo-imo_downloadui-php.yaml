@@ -1,0 +1,28 @@
+id: imo------imo_downloadui-php---------
+info:
+  author: pocscanner
+  description: imo 云办公室 由于 /file/Placard/upload/Imo_DownLoadUI.php 页面 filename 参数过滤不严，导致可以读取系统敏感文件。
+  name: imo 云办公室 Imo_DownLoadUI.php 任意文件下载漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/file/Placard/upload/Imo_DownLoadUI.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/OpenPlatform/config/kdBind.php'

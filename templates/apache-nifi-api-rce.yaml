@@ -1,0 +1,28 @@
+id: apache-nifi-api--------rce
+info:
+  author: pocscanner
+  description: 'Apache NiFi是Apache Software Foundation的一个软件项目，旨在使软件系统之间的数据流自动化。
+
+
+    参考链接：
+
+
+    - https://twitter.com/chybeta/status/1333341820596568065
+
+    - https://github.com/imjdl/Apache-NiFi-Api-RCE
+
+    - https://forum.ywhack.com/thread-114763-1-3.html'
+  name: Apache NiFi Api 远程代码执行 RCE
+  reference:
+  - https://twitter.com/chybeta/status/1333341820596568065
+  - https://github.com/imjdl/Apache-NiFi-Api-RCE
+  - https://forum.ywhack.com/thread-114763-1-3.html
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

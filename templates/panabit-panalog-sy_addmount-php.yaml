@@ -1,0 +1,38 @@
+id: panabit-panalog-sy_addmount-php---------
+info:
+  author: pocscanner
+  description: Panabit Panalog sy_addmount.php过滤不足，导致远程命令执行漏洞
+  name: Panabit Panalog sy_addmount.php 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/account/sy_addmount.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/../common.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/sy_addmount.php'

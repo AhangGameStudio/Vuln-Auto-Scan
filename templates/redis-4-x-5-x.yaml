@@ -1,0 +1,22 @@
+id: redis-4-x-5-x--------
+info:
+  author: pocscanner
+  description: 'Redis未授权访问在4.x/5.0.5以前版本下，我们可以使用master/slave模式加载远程模块，通过动态链接库的方式执行任意命令。
+
+
+    参考链接：
+
+
+    - https://2018.zeronights.ru/wp-content/uploads/materials/15-redis-post-exploitation.pdf'
+  name: Redis 4.x/5.x 未授权访问漏洞
+  reference:
+  - https://2018.zeronights.ru/wp-content/uploads/materials/15-redis-post-exploitation.pdf
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

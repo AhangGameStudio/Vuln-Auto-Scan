@@ -1,0 +1,15 @@
+id: '-------------rce'
+info:
+  author: pocscanner
+  description: 默安 幻阵蜜罐存在部署页面未授权访问 ，可执行任意命令
+  name: 默安 幻阵蜜罐未授权访问 RCE
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

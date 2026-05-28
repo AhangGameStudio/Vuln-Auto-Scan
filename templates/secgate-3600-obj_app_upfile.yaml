@@ -1,0 +1,18 @@
+id: '---secgate-3600-----obj_app_upfile---------'
+info:
+  author: pocscanner
+  description: 网神 SecGate 3600 防火墙 obj_app_upfile接口存在任意文件上传漏洞，攻击者通过构造特殊请求包即可获取服务器权限
+  name: 网神 SecGate 3600 防火墙 obj_app_upfile 任意文件上传漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/xxx.php'

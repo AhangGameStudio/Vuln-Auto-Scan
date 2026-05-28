@@ -1,0 +1,15 @@
+id: panabit-ixcache-date_config---------
+info:
+  author: pocscanner
+  description: Panabit iXCache date_config模块存在命令拼接，导致可执行任意命令
+  name: Panabit iXCache date_config 后台命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

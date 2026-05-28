@@ -1,0 +1,15 @@
+id: cma-------upfile-ashx---------
+info:
+  author: pocscanner
+  description: CMA客诉管理系统 upFile.ashx文件存在任意文件上传漏洞，通过漏洞攻击者可以上传任意文件控制服务器
+  name: CMA客诉管理系统 upFile.ashx 任意文件上传漏洞
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

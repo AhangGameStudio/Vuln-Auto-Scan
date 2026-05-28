@@ -1,0 +1,15 @@
+id: teleport----do-login---------
+info:
+  author: pocscanner
+  description: Teleport堡垒机存在任意用户登录漏洞，攻击者通过构造特殊的请求包可以登录堡垒机获取其他系统权限
+  name: Teleport堡垒机 do-login 任意用户登录漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

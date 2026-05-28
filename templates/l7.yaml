@@ -1,0 +1,15 @@
+id: '----l7-------------'
+info:
+  author: pocscanner
+  description: 碧海威 L7多款产品存在 后台命令执行漏洞，攻击者通过账号密码登录后台后，通过命令拼接造成命令注入。
+  name: 碧海威 L7多款产品 后台命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

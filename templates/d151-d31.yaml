@@ -1,0 +1,15 @@
+id: '------d151-d31-----------'
+info:
+  author: pocscanner
+  description: 攻击者可利用此漏洞，通过请求{IP}/goform/getimage即可下载当前路由器配置（包括管理员登录名），也可以通过请求激活telnet服务/goform/telnet（默认情况下该服务已启用）。
+  name: 腾达路由器 D151/D31未经身份验证的配置下载
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

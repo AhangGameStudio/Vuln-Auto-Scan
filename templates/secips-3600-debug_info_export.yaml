@@ -1,0 +1,15 @@
+id: '---secips-3600-debug_info_export---------'
+info:
+  author: pocscanner
+  description: 网神 SecIPS 3600 debug_info_export接口存在任意文件下载漏洞，攻击者通过漏洞可以获取服务器敏感文件
+  name: 网神 SecIPS 3600 debug_info_export 任意文件下载漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

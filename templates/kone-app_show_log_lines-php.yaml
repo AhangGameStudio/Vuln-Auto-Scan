@@ -1,0 +1,15 @@
+id: kone----------app_show_log_lines-php---------
+info:
+  author: pocscanner
+  description: KONE 通力电梯 app_show_log_lines.php文件过滤不足导致任意文件读取漏洞
+  name: KONE 通力电梯管理系统 app_show_log_lines.php 任意文件读取漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

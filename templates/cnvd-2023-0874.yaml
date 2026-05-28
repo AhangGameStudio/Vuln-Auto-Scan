@@ -1,0 +1,15 @@
+id: cnvd-2023-0874
+info:
+  author: pocscanner
+  description: 宏景 HCM codesettree 接口存在SQL注入漏洞，攻击者通过漏洞可以获取到登陆系统的账号密码和数据库信息
+  name: 宏景 HCM codesettree SQL注入漏洞 CNVD-2023-0874
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

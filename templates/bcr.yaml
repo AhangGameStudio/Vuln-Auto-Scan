@@ -1,0 +1,15 @@
+id: '---bcr----------------'
+info:
+  author: pocscanner
+  description: 锐捷 BCR商业无线云网关 存在后台命令执行漏洞，攻击者通过默认口令可以登陆后台构造特殊的参数执行任意命令，获取服务器权限
+  name: 锐捷 BCR商业无线云网关 后台命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

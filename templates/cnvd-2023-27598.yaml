@@ -1,0 +1,15 @@
+id: cnvd-2023-27598
+info:
+  author: pocscanner
+  description: Solr 以 Solrcloud 模式启动且可出网时，未经身份验证的远程攻击者可以通过发送特制的数据包进行利用，最终在目标系统上远程执行任意代码。
+  name: Apache Solr 代码执行漏洞 CNVD-2023-27598
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

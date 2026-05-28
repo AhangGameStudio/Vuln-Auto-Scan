@@ -1,0 +1,15 @@
+id: '----e---config-xml-------'
+info:
+  author: pocscanner
+  description: 惠尔顿 e地通Socks5 VPN登录系统 存在信息泄漏漏洞，访问特殊的Url即可获取管理员账号密码
+  name: 惠尔顿 e地通 config.xml 信息泄漏漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

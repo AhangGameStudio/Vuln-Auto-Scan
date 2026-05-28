@@ -1,0 +1,15 @@
+id: '--------------getfacecapture-sql----'
+info:
+  author: pocscanner
+  description: 大华 智慧园区综合管理平台 getFaceCapture 接口存在SQL注入漏洞，攻击者通过漏洞可以执行任意SQL语句，获取数据库敏感信息
+  name: 大华 智慧园区综合管理平台 getFaceCapture SQL注入漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

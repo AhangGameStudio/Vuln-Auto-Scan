@@ -1,0 +1,18 @@
+id: '-------list---------'
+info:
+  author: pocscanner
+  description: 会捷通云视讯某个文件 list参数 存在目录文件泄露漏洞，攻击者通过漏洞可以获取一些敏感信息
+  name: 会捷通云视讯 list 目录文件泄露漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/rest/V1.0/system/log/list'

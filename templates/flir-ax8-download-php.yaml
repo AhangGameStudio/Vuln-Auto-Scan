@@ -1,0 +1,18 @@
+id: flir-ax8-download-php-------
+info:
+  author: pocscanner
+  description: FLIR-AX8 download.php文件过滤不全 存在任意文件下载漏洞
+  name: FLIR-AX8 download.php 任意文件下载
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/download.php'

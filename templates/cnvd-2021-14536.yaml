@@ -1,0 +1,15 @@
+id: cnvd-2021-14536
+info:
+  author: pocscanner
+  description: 锐捷RG-UAC统一上网行为管理审计系统存在账号密码信息泄露,可以间接获取用户账号密码信息登录后台
+  name: 锐捷 RG-UAC 账号密码信息泄露 CNVD-2021-14536
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,15 @@
+id: hue------------
+info:
+  author: pocscanner
+  description: Hue 后台编辑器存在命令执行漏洞，攻击者通过编辑上传  xxx.sh 文件即可达到命令执行的目的
+  name: Hue 后台编辑器命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

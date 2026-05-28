@@ -1,0 +1,15 @@
+id: '---------erp---validateloginname-sql----'
+info:
+  author: pocscanner
+  description: 云时空 社会化商业ERP系统存在SQL注入漏洞，攻击者通过漏洞可以获取数据库敏感信息
+  name: 云时空 社会化商业ERP系统 validateLoginName SQL注入漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

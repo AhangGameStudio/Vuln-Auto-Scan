@@ -1,0 +1,15 @@
+id: h3c-imc-dynamiccontent-properties-xhtm-------
+info:
+  author: pocscanner
+  description: H3C IMC dynamiccontent.properties.xhtm 存在远程命令执行，攻击者通过构造特殊的请求造成远程命令执行
+  name: H3C IMC dynamiccontent.properties.xhtm 远程命令执行
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

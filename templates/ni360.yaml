@@ -1,0 +1,15 @@
+id: '---ni360----------'
+info:
+  author: pocscanner
+  description: 磊科 NI360路由器 存在认证绕过漏洞，通过添加特定的Cookie字段获取后台权限
+  name: 磊科 NI360路由器 认证绕过漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

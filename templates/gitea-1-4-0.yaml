@@ -1,0 +1,25 @@
+id: gitea-1-4-0-------------
+info:
+  author: pocscanner
+  description: 'Gitea是从gogs衍生出的一个开源项目，是一个类似于Github、Gitlab的多用户Git仓库管理平台。其1.4.0版本中有一处逻辑错误，导致未授权用户可以穿越目录，读写任意文件，最终导致执行任意命令。
+
+
+    参考链接：
+
+
+    - https://security.szurek.pl/gitea-1-4-0-unauthenticated-rce.html
+
+    - https://www.leavesongs.com/PENETRATION/gitea-remote-command-execution.html'
+  name: Gitea 1.4.0 目录穿越导致命令执行漏洞
+  reference:
+  - https://security.szurek.pl/gitea-1-4-0-unauthenticated-rce.html
+  - https://www.leavesongs.com/PENETRATION/gitea-remote-command-execution.html
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

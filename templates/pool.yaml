@@ -1,0 +1,15 @@
+id: '---------pool-------'
+info:
+  author: pocscanner
+  description: 锐捷云课堂主机存在目录遍历漏洞，通过访问get请求/pool/，即可读取目录.导致敏感信息泄露.
+  name: 锐捷 云课堂主机 pool 目录遍历漏洞
+  reference: []
+  severity: medium
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

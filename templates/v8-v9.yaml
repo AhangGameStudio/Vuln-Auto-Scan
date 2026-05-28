@@ -1,0 +1,22 @@
+id: '---v8-v9--------------'
+info:
+  author: pocscanner
+  description: '参考链接：
+
+
+    - https://forum.butian.net/share/76'
+  name: 金山 V8 V9 终端安全系统 文件上传漏洞
+  reference:
+  - https://forum.butian.net/share/76
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/tools/manage/upload.php'

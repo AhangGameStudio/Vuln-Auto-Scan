@@ -1,0 +1,18 @@
+id: '-------------service-action---------'
+info:
+  author: pocscanner
+  description: 新开普 前置服务管理平台 service.action 接口存在远程命令执行漏洞，攻击者通过漏洞可以获取服务器权限
+  name: 新开普 前置服务管理平台 service.action 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/service_transport/service.action'

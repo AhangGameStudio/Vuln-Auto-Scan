@@ -1,0 +1,15 @@
+id: '------t--getstorewarehousebystore---------'
+info:
+  author: pocscanner
+  description: 用友 畅捷通T+ GetStoreWarehouseByStore 存在 .net反序列化漏洞，导致远程命令执行，控制服务器
+  name: 用友 畅捷通T+ GetStoreWarehouseByStore 远程命令执行漏洞
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

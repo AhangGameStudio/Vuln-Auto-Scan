@@ -1,0 +1,15 @@
+id: cnvd-2023-45001
+info:
+  author: pocscanner
+  description: 该漏洞源于 Nacos 集群处理部分 Jraft 请求时，未限制使用 hessian 进行反 。序列化，攻击者可以通过发送特制的请求触发该漏洞，最终执行任意远程代码。
+  name: Nacos 集群 Raft 反序列化漏洞 CNVD-2023-45001
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

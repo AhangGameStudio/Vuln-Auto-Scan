@@ -1,0 +1,15 @@
+id: elasticsearch------
+info:
+  author: pocscanner
+  description: Elasticsearch是用Java开发的企业级搜索引擎，默认端口9200，存在未授权访问漏洞时，可被非法操作数据
+  name: Elasticsearch 未授权访问
+  reference: []
+  severity: high
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

@@ -1,0 +1,18 @@
+id: konga----------------
+info:
+  author: pocscanner
+  description: Konga 普通用户通过发送特殊的请求可越权获取管理员权限
+  name: Konga 普通用户越权获取管理员权限漏洞
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/api/user/7'

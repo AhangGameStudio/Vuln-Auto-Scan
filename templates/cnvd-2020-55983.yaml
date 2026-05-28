@@ -1,0 +1,15 @@
+id: cnvd-2020-55983
+info:
+  author: pocscanner
+  description: 中国移动 禹路由 simple-index.asp 存在越权访问漏洞，攻击者通过漏洞可以获取账号密码等敏感信息
+  name: 中国移动 禹路由 simple-index.asp 越权访问漏洞 CNVD-2020-55983
+  reference: []
+  severity: low
+requests:
+- matchers:
+  - status:
+    - 200
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/'

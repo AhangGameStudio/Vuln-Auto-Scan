@@ -1,0 +1,28 @@
+id: '---eg----branch_passw-php-------'
+info:
+  author: pocscanner
+  description: 锐捷EG易网关 branch_passw.php存在命令执行漏洞，配合 锐捷EG易网关 管理员账号密码泄露漏洞 达到RCE控制服务器
+  name: 锐捷 EG易网关 branch_passw.php 远程命令执行
+  reference: []
+  severity: critical
+requests:
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/itbox_pi/branch_passw.php'
+- matchers:
+  - status:
+    - 200
+    - 301
+    - 302
+    - 403
+    type: status
+  method: GET
+  path:
+  - '{{BaseURL}}/init.php'
