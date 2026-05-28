@@ -21,7 +21,28 @@ import urllib3
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from functools import lru_cache
 
+from enum import Enum
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+class ScanPhase(Enum):
+    RECON = "侦察"
+    PROBE = "探测"
+    ATTACK = "攻击"
+    VERIFY = "验证"
+    REPORT = "报告"
+
+class VulnSeverity(Enum):
+    CRITICAL = "严重"
+    HIGH = "高危"
+    MEDIUM = "中危"
+    LOW = "低危"
+    INFO = "信息"
+
+class ToolDangerLevel(Enum):
+    SAFE = 0
+    CONFIRM = 1
+    DANGEROUS = 2
 
 REQUIRED_PACKAGES = ["requests", "urllib3"]
 
@@ -48,6 +69,21 @@ def check_and_install_packages():
 check_and_install_packages()
 
 import requests
+
+@dataclass
+class Vulnerability:
+    id: str
+    type: str
+    severity: VulnSeverity
+    target: str
+    endpoint: str
+    payload: str
+    confidence: float
+    evidence: str
+    discovered_at: str = field(default_factory=lambda: datetime.now().isoformat())
+    verified: bool = False
+    cve_id: Optional[str] = None
+    description: str = ""
 
 @dataclass
 class ScanConfig:
